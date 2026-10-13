@@ -2,29 +2,6 @@
    Hora del Cuento — soft pastel picture-book styles
    ========================================================================== */
 
-/* Self-hosted fonts (SIL Open Font License, see fonts/OFL-*.txt) so the app works offline */
-@font-face {
-  font-family: 'Fredoka';
-  font-style: normal;
-  font-weight: 300 700;
-  font-display: swap;
-  src: url('../fonts/fredoka.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Andika';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('../fonts/andika-400.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Andika';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('../fonts/andika-700.woff2') format('woff2');
-}
-
 :root {
   --cream: #fff8f0;
   --paper: #fffdf9;
@@ -47,6 +24,7 @@
   --accent: var(--lavender);
   --accent-deep: var(--lavender-deep);
   --highlight: #ffecb0;
+  --vocab-ink: #6a4fb8;
 
   --font-display: 'Fredoka', ui-rounded, 'Arial Rounded MT Bold', system-ui, sans-serif;
   --font-read: 'Andika', Verdana, ui-sans-serif, sans-serif;
@@ -59,10 +37,10 @@
   --gutter: clamp(16px, 4vw, 40px);
 }
 
-.theme-peach { --accent: var(--peach); --accent-deep: var(--peach-deep); --highlight: #ffe2c4; }
-.theme-sky { --accent: var(--sky); --accent-deep: var(--sky-deep); --highlight: #ffecb0; }
-.theme-mint { --accent: var(--mint); --accent-deep: var(--mint-deep); --highlight: #ffecb0; }
-.theme-lavender { --accent: var(--lavender); --accent-deep: var(--lavender-deep); --highlight: #ffe6c8; }
+.theme-peach { --accent: var(--peach); --accent-deep: var(--peach-deep); --highlight: #ffe2c4; --vocab-ink: #b84a2e; }
+.theme-sky { --accent: var(--sky); --accent-deep: var(--sky-deep); --highlight: #ffecb0; --vocab-ink: #2a6aa8; }
+.theme-mint { --accent: var(--mint); --accent-deep: var(--mint-deep); --highlight: #ffecb0; --vocab-ink: #23805b; }
+.theme-lavender { --accent: var(--lavender); --accent-deep: var(--lavender-deep); --highlight: #ffe6c8; --vocab-ink: #6a4fb8; }
 
 /* ---------- Base ---------- */
 
@@ -402,7 +380,7 @@ main > section { animation: fade-in 0.45s var(--ease-out) both; }
   line-height: 1.6;
   max-width: 44ch;
 }
-.book-info .btn-big { margin-block: 8px 12px; }
+.book-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-block: 8px 12px; }
 
 .chapter-path {
   position: relative;
@@ -575,6 +553,18 @@ main > section { animation: fade-in 0.45s var(--ease-out) both; }
 }
 .sentence:hover { background: color-mix(in oklab, var(--accent) 55%, transparent); }
 .sentence.is-current { background: var(--highlight); }
+
+/* Vocabulary words: bold, in the book's ink color, with a wavy underline */
+.vocab {
+  background: none;
+  color: var(--vocab-ink);
+  font-weight: 700;
+  text-decoration: underline wavy color-mix(in oklab, var(--vocab-ink) 55%, transparent);
+  text-decoration-thickness: 0.07em;
+  text-underline-offset: 0.22em;
+  text-decoration-skip-ink: none;
+  cursor: help;
+}
 
 .page-nav {
   display: flex;

@@ -99,6 +99,7 @@
     const { progress, state } = bookStatus(book);
     const target = state === 'done' ? 1 : progress.chapter;
     const ctaKey = { new: 'start', progress: 'continueChapter', done: 'listenAgain' }[state];
+    const topic = window.Vocab.forBook(book.id)?.topic;
 
     const steps = book.chapters
       .map((ch) => {
@@ -128,13 +129,22 @@
         <div class="book-layout">
           <div class="cover cover-large"><img src="${esc(book.cover)}" alt="" width="600" height="800"></div>
           <div class="book-info">
-            <p class="eyebrow"><span data-i18n="audiobook"></span> <span aria-hidden="true">·</span> ${bookMeta(book)}</p>
+            <p class="eyebrow">
+              <span data-i18n="audiobook"></span> <span aria-hidden="true">·</span>
+              ${topic ? `<span data-l10n-es="Vocabulario: ${esc(topic.es.toLowerCase())}" data-l10n-en="Vocabulary: ${esc(topic.en.toLowerCase())}"></span> <span aria-hidden="true">·</span>` : ''}
+              ${bookMeta(book)}
+            </p>
             <h1 tabindex="-1" lang="en">${esc(book.title)}</h1>
             <p class="summary" data-l10n-es="${esc(book.summary.es)}" data-l10n-en="${esc(book.summary.en)}"></p>
-            <a class="btn btn-primary btn-big" href="#/book/${esc(book.id)}/ch/${target}">
-              ${icon(state === 'done' ? 'replay' : 'play')}
-              <span data-i18n="${ctaKey}" data-i18n-params="${params({ n: target })}"></span>
-            </a>
+            <div class="book-actions">
+              <a class="btn btn-primary btn-big" href="#/book/${esc(book.id)}/ch/${target}">
+                ${icon(state === 'done' ? 'replay' : 'play')}
+                <span data-i18n="${ctaKey}" data-i18n-params="${params({ n: target })}"></span>
+              </a>
+              <a class="btn btn-ghost btn-big" href="pdf/${esc(book.id)}.pdf" download="${esc(book.title)}.pdf">
+                ${icon('download')}<span data-i18n="downloadPdf"></span>
+              </a>
+            </div>
             <ol class="chapter-path" role="list">${steps}</ol>
           </div>
         </div>
@@ -363,7 +373,7 @@
       shownPage = n;
       current = -1;
       pageText.innerHTML = pages[n]
-        .map((unit) => `<span class="sentence" data-i="${unit.index}">${esc(unit.text)}</span>`)
+        .map((unit) => `<span class="sentence" data-i="${unit.index}">${window.Vocab.markup(unit.text, id)}</span>`)
         .join(' ');
       fitText();
       dots.forEach((dot, i) => {

@@ -6,6 +6,8 @@ Audiolibros infantiles (6–9 años) con reproductor por capítulo. HTML, CSS y 
 - Voces neuronales gratuitas generadas con [edge-tts](https://github.com/rany2/edge-tts): un narrador por libro y una voz por personaje.
 - El capítulo se ve como un libro abierto: la ilustración a la izquierda y, a la derecha, el texto de una o dos oraciones a la vez. La página pasa sola mientras avanza el audio.
 - Mientras suena el audio se resalta la frase actual; al tocar una frase, el audio salta a ella.
+- Cada libro trabaja un vocabulario (animales, naturaleza, frutas): esas palabras se ven en negrita, con color y subrayado ondulado, y al pasar el mouse muestran la traducción al español.
+- Cada libro se puede descargar en PDF (botón en la página del libro): portada, una página por párrafo con su ilustración y una página final de vocabulario inglés–español.
 - Tamaño de letra ajustable (4 tamaños). El libro mantiene siempre el mismo tamaño: si una página tiene más texto, la letra se achica sola.
 - La ilustración cambia en cada párrafo (cada ~8 s), mostrando lo que pasa en el cuento, con transición suave y un movimiento lento de cámara.
 - Velocidad (lento / normal / rápido), volumen, ±10 s y capítulo anterior/siguiente.
@@ -46,7 +48,8 @@ El script sintetiza cada frase por separado y concatena los MP3. edge-tts entreg
    - Un texto simple lo lee el narrador.
    - Un objeto de una sola clave, como `{"Pip": "“Hello!”"}`, es un diálogo y lo lee la voz de ese personaje.
 3. Pon las ilustraciones en `images/<id>/cover.svg` (3:4) y `images/<id>/ch1.svg`, `ch2.svg`… (4:3). Opcionalmente, agrega una escena por párrafo en `images/<id>/ch<N>/p01.svg`, `p02.svg`…; un párrafo sin escena reusa la anterior.
-4. Corre `tools/generate_audio.py`, luego `python3 tools/build_scene_index.py` (escribe `js/scenes.js`) y al final `python3 tools/build_offline.py` (escribe `offline-manifest.js`).
+4. Agrega su `vocabulary` (tema y palabras con traducción y emoji; `forms` para plurales o irregulares como mouse/mice).
+5. Corre `tools/generate_audio.py` y luego `python3 tools/build.py`.
 
 Las ilustraciones actuales salen de `tools/make_illustrations.py` (portadas y capítulos) y de `tools/scenes_<id>.py` (escenas por párrafo).
 
@@ -64,6 +67,10 @@ js/views.js           vistas: biblioteca, libro y capítulo
 js/app.js             router y arranque
 js/data.js            GENERADO: libros, capítulos, frases con tiempos
 js/scenes.js          GENERADO: escena de cada párrafo
+js/vocabulary.js      GENERADO: vocabulario de cada libro
+js/vocab-markup.js    resalta las palabras del vocabulario en el texto
+print.html            versión imprimible de un libro (print.html?book=pip), de ahí salen los PDF
+pdf/                  GENERADO: un PDF por libro
 content/stories.json  FUENTE de los cuentos
 sw.js                 service worker: guarda la app para usarla sin internet
 offline-manifest.js   GENERADO: archivos que se guardan y versión
@@ -77,7 +84,18 @@ tools/                scripts de generación
 
 ## Modo sin internet
 
-`sw.js` descarga en segundo plano todos los archivos de `offline-manifest.js` la primera vez que alguien abre la web, y desde ahí sirve la app desde el equipo. La versión del manifest es un hash de todos los archivos: **después de cualquier cambio corre `python3 tools/build_offline.py`** antes de subir, así los equipos que ya tenían la app descargan la versión nueva automáticamente (se aplica al cambiar de pantalla).
+`sw.js` descarga en segundo plano todos los archivos de `offline-manifest.js` la primera vez que alguien abre la web, y desde ahí sirve la app desde el equipo. La versión del manifest es un hash de todos los archivos: **después de cualquier cambio corre `python3 tools/build.py`** antes de subir, así los equipos que ya tenían la app descargan la versión nueva automáticamente (se aplica al cambiar de pantalla).
 
 Solo funciona servida por http(s), por ejemplo GitHub Pages o `tools/serve.py`. Abierta con doble clic (`file://`) la app ya funciona sin internet por sí sola.
+
+## Construir
+
+Después de cualquier cambio (textos, imágenes, código), corre:
+
+```sh
+python3 tools/build.py            # escenas, vocabulario, PDFs y manifest sin internet
+python3 tools/build.py --no-pdf   # igual, pero sin regenerar los PDF
+```
+
+Los PDF se generan con Google Chrome en modo headless (`tools/build_pdfs.mjs`, necesita Node). Si Chrome no está en su ruta habitual, define `CHROME_PATH`.
 

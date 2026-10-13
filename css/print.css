@@ -1,0 +1,142 @@
+/* Printable book (print.html): A4 landscape sheets, one per page of the PDF. */
+
+@page { size: 297mm 210mm; margin: 0; }
+
+:root {
+  --cream: #fff8f0;
+  --paper: #fffdf9;
+  --ink: #3b3355;
+  --ink-soft: #6e6588;
+  --accent: #e4dcf7;
+  --accent-deep: #a998de;
+  --vocab-ink: #6a4fb8;
+}
+.theme-peach { --accent: #ffd9cc; --accent-deep: #f4a58c; --vocab-ink: #b84a2e; }
+.theme-sky { --accent: #d2e7f7; --accent-deep: #8bbde6; --vocab-ink: #2a6aa8; }
+.theme-mint { --accent: #cfefe3; --accent-deep: #78c9a8; --vocab-ink: #23805b; }
+
+* { box-sizing: border-box; }
+
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+body {
+  margin: 0;
+  font-family: 'Fredoka', ui-rounded, system-ui, sans-serif;
+  color: var(--ink);
+  background: #e7e2ee;
+}
+
+h1, h2, p { margin: 0; }
+
+.sheet {
+  position: relative;
+  width: 297mm;
+  height: 210mm;
+  overflow: hidden;
+  background: var(--cream);
+  break-after: page;
+}
+.sheet:last-child { break-after: auto; }
+
+@media screen {
+  .sheet { margin: 10mm auto; box-shadow: 0 6px 24px rgb(59 51 85 / 0.2); }
+}
+
+footer {
+  position: absolute;
+  right: 18mm;
+  bottom: 8mm;
+  font-size: 9pt;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+/* Cover */
+.cover {
+  display: grid;
+  grid-template-columns: 118mm 1fr;
+  gap: 16mm;
+  align-items: center;
+  padding: 18mm 22mm;
+  background: linear-gradient(135deg, var(--accent), var(--cream) 65%);
+}
+.cover-art {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 3mm 8mm 8mm 3mm;
+  box-shadow: 0 4mm 10mm rgb(59 51 85 / 0.25);
+}
+.brand { font-size: 11pt; font-weight: 600; color: var(--ink-soft); letter-spacing: 0.02em; }
+.cover h1 { margin: 3mm 0 7mm; font-size: 34pt; font-weight: 600; line-height: 1.05; }
+.summary { font-family: 'Andika', sans-serif; font-size: 14pt; line-height: 1.5; }
+.summary-es { margin-top: 2mm; font-size: 12pt; color: var(--ink-soft); }
+.topic {
+  display: inline-block;
+  margin: 7mm 0 5mm;
+  padding: 2mm 5mm;
+  border-radius: 99px;
+  background: var(--paper);
+  font-size: 11pt;
+  font-weight: 600;
+}
+.contents { margin: 0; padding: 0; list-style: none; font-size: 12pt; line-height: 1.8; }
+.contents span { font-weight: 600; color: var(--ink-soft); margin-right: 2mm; }
+
+/* Story page: scene + paragraph */
+.page {
+  display: grid;
+  grid-template-columns: 150mm 1fr;
+  gap: 14mm;
+  align-items: center;
+  padding: 16mm 18mm 18mm;
+}
+.art {
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  border-radius: 6mm;
+  overflow: hidden;
+  background: var(--accent);
+}
+.art img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.chapter p { font-size: 11pt; font-weight: 500; color: var(--ink-soft); }
+.chapter h2 { margin: 1mm 0 7mm; font-size: 18pt; font-weight: 600; line-height: 1.15; }
+.story { font-family: 'Andika', sans-serif; font-size: 19pt; line-height: 1.55; text-wrap: pretty; }
+
+.vocab {
+  background: none;
+  color: var(--vocab-ink);
+  font-weight: 700;
+  text-decoration: underline wavy color-mix(in oklab, var(--vocab-ink) 55%, transparent);
+  text-decoration-thickness: 0.07em;
+  text-underline-offset: 0.22em;
+  text-decoration-skip-ink: none;
+}
+
+/* Vocabulary page */
+.vocabulary { padding: 18mm 22mm; }
+.vocabulary h2 { font-size: 26pt; font-weight: 600; }
+.vocabulary h2 span { color: var(--ink-soft); font-weight: 500; }
+.vocabulary .topic { margin: 3mm 0 0; }
+.vocabulary ul {
+  list-style: none;
+  margin: 8mm 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(38mm, 1fr));
+  gap: 4mm;
+}
+.vocabulary li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1mm;
+  padding: 4mm 3mm;
+  border-radius: 4mm;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 0.5mm color-mix(in oklab, var(--accent-deep) 40%, transparent);
+}
+.emoji { font-size: 20pt; line-height: 1.2; }
+.vocabulary b { font-size: 15pt; color: var(--vocab-ink); }
+.vocabulary .es { font-size: 11pt; color: var(--ink-soft); }
