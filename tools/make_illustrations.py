@@ -180,7 +180,8 @@ def sun(x, y, r):
     return circle(x, y, r * 2.4, url("glow"), op(0.9)) + circle(x, y, r, "#FFE38A") + circle(x - r * 0.15, y - r * 0.15, r * 0.72, "#FFEDAE")
 
 
-RAINBOW = ["#F7B7C3", "#FFD3B0", "#FFF0B5", "#CFEFE3", "#C6E0F5", "#DCD2F3"]
+# rojo, naranja, amarillo, verde, azul y morado (en pastel)
+RAINBOW = ["#F5A3AE", "#FFC59A", "#FFE99A", "#B3E2BC", "#A9D1F0", "#CBBCEF"]
 
 
 def rainbow(cx, cy, R, w, o=0.95):
@@ -469,8 +470,12 @@ BUN_PINK = "#F6B3C2"
 NOSE = "#F08FA8"
 
 
-def benny(x, y, s=1.0, flip=False, pose="stand", expr="happy", holding="", look=(0, 0)):
-    """Benny, el conejo. Origen: entre las patas, a nivel del suelo."""
+def benny(x, y, s=1.0, flip=False, pose="stand", expr="happy", holding="", look=(0, 0), pal=None, mid="", face_extra=""):
+    """Benny, el conejo. Origen: entre las patas, a nivel del suelo.
+
+    pal cambia los colores (BUN, BUN_D, BUN_L); mid se dibuja bajo la cabeza y
+    face_extra sobre la cara (lo usa la abuela para el chal y los lentes)."""
+    BUN, BUN_D, BUN_L = pal or (globals()["BUN"], globals()["BUN_D"], globals()["BUN_L"])
     o = []
     o.append(g(ellipse(0, -40, 14, 44, BUN) + ellipse(0, -38, 7, 32, BUN_PINK), -20, -150, rot=-10))
     o.append(path("M8 -148 C12 -200 66 -204 84 -154 C88 -141 77 -131 69 -141 C58 -170 34 -174 26 -146 Z", fill=BUN))
@@ -504,6 +509,7 @@ def benny(x, y, s=1.0, flip=False, pose="stand", expr="happy", holding="", look=
     else:
         o.append(arm_side(-1) + arm_side(1))
 
+    o.append(mid)
     o.append(circle(0, -116, 44, BUN))
     o.append(circle(-14, -100, 15, BUN_L) + circle(14, -100, 15, BUN_L))
     if expr == "joy":
@@ -519,7 +525,24 @@ def benny(x, y, s=1.0, flip=False, pose="stand", expr="happy", holding="", look=
         o.append(rect(-3.5, -98.5, 7, 6, WHITE, rx=1.5))
         o.append(path("M0 -103 L0 -99 M-7 -97 Q-3.5 -94 0 -99 Q3.5 -94 7 -97", stroke=PLUM, sw=2.4))
     o.append(ellipse(0, -107, 6, 4.4, NOSE))
+    o.append(face_extra)
     return g("".join(o), x, y, s, flip=flip)
+
+
+GRANNY = ("#E6DED6", "#D2C7BC", "#FBF7F2")
+
+
+def grandma_bunny(x, y, s=1.0, flip=False, holding=""):
+    """La abuela Bunny: misma forma que Benny, pelaje gris claro, chal y lentes."""
+    shawl = (path("M-44 -86 Q0 -64 44 -86 L36 -46 Q0 -30 -36 -46 Z", fill="#CDBDF0", stroke="#CDBDF0", sw=6)
+             + path("M-30 -44 L-32 -36 M-18 -38 L-19 -30 M-6 -35 L-6 -27 M6 -35 L6 -27 M18 -38 L19 -30 M30 -44 L32 -36",
+                    stroke="#B8A6E6", sw=3)
+             + circle(0, -70, 6, "#F6B8A8"))
+    glasses = (circle(-17, -125, 11, "none", f' stroke="{PLUM}" stroke-width="2.4"')
+               + circle(17, -125, 11, "none", f' stroke="{PLUM}" stroke-width="2.4"')
+               + path("M-6 -126 Q0 -130 6 -126", stroke=PLUM, sw=2.4))
+    pose = "hold" if holding else "stand"
+    return benny(x, y, s, flip=flip, pose=pose, expr="happy", holding=holding, pal=GRANNY, mid=shawl, face_extra=glasses)
 
 
 def watering_can(x, y, s=1.0, flip=False, pour=False):
@@ -576,8 +599,9 @@ MOUSE_D = "#ABA0BC"
 MOUSE_L = "#ECE7F1"
 
 
-def milo(x, y, s=1.0, flip=False, expr="happy", body=True, holding=""):
-    """Milo, el ratoncito. Origen: entre las patas, a nivel del suelo."""
+def milo(x, y, s=1.0, flip=False, expr="happy", body=True, holding="", pal=None):
+    """Milo, el ratoncito. Origen: entre las patas, a nivel del suelo. pal = (MOUSE, MOUSE_D, MOUSE_L)."""
+    MOUSE, MOUSE_D, MOUSE_L = pal or (globals()["MOUSE"], globals()["MOUSE_D"], globals()["MOUSE_L"])
     o = []
     if body:
         o.append(path("M16 -8 C46 -4 54 -36 38 -42 C27 -46 25 -28 36 -29", stroke=MOUSE_D, sw=4))
@@ -702,6 +726,375 @@ def sprout(x, y, s=1.0):
     return g(path("M0 0 L0 -14", stroke=STEM, sw=3.5) + leaf(0, -14, 14, -40) + leaf(0, -12, 12, -145), x, y, s)
 
 
+# ------------------------------------------------- animales del bosque (Pip)
+
+RAB = "#EEE9F3"
+RAB_D = "#DCD4E6"
+RAB_PINK = "#F6C1CD"
+
+
+def rabbit(x, y, s=1.0, flip=False, expr="happy"):
+    """Conejito del bosque (no es Benny). Mira a la derecha. Origen: patas."""
+    o = [circle(-40, -26, 12, WHITE)]
+    o.append(ellipse(-8, -34, 38, 33, RAB))
+    o.append(ellipse(2, -6, 22, 8, RAB_D) + ellipse(26, -5, 11, 6, RAB))
+    o.append(ellipse(14, -120, 10, 30, RAB, rot=-12) + ellipse(14, -118, 5, 20, RAB_PINK, rot=-12))
+    o.append(ellipse(36, -116, 10, 28, RAB, rot=16) + ellipse(36, -114, 5, 18, RAB_PINK, rot=16))
+    o.append(circle(24, -72, 28, RAB))
+    if expr == "sleepy":
+        o.append(calm_eye(14, -76, 10, 2.6) + calm_eye(34, -76, 10, 2.6))
+        o.append(path("M48 -98 L58 -98 L48 -88 L58 -88", stroke="#CFC6E6", sw=2.6))
+    elif expr == "joy":
+        o.append(happy_eye(14, -76, 10, 2.6) + happy_eye(34, -76, 10, 2.6))
+    else:
+        o.append(eye(14, -76, 4.2) + eye(34, -76, 4.2))
+    o.append(blush(6, -63, 5, 3.2) + blush(42, -63, 5, 3.2))
+    o.append(ellipse(24, -66, 4, 3, NOSE))
+    o.append(path("M24 -63 L24 -60 M19 -58 Q21.5 -56 24 -60 Q26.5 -56 29 -58", stroke=PLUM, sw=2))
+    return g("".join(o), x, y, s, flip=flip)
+
+
+FROG = "#A9DDA0"
+FROG_D = "#8FCB88"
+FROG_L = "#E2F4D4"
+
+
+def frog(x, y, s=1.0, flip=False, expr="happy"):
+    """Ranita verde. Origen: base (suelo o nenúfar)."""
+    o = [ellipse(-26, -10, 16, 10, FROG_D) + ellipse(26, -10, 16, 10, FROG_D)]
+    o.append(ellipse(0, -24, 30, 22, FROG))
+    o.append(ellipse(0, -18, 18, 13, FROG_L))
+    o.append(ellipse(-12, -3, 8, 4, FROG_D) + ellipse(12, -3, 8, 4, FROG_D))
+    for sx in (-1, 1):
+        o.append(circle(sx * 16, -44, 11, FROG) + circle(sx * 16, -45, 7.5, WHITE)
+                 + circle(sx * 16, -44, 4.6, PLUM) + circle(sx * 16 + 1.6, -46, 1.6, WHITE))
+    o.append(blush(-21, -29, 5, 3) + blush(21, -29, 5, 3))
+    if expr == "joy":
+        o.append(open_mouth(0, -32, 14))
+    else:
+        o.append(smile(0, -33, 20, 2.6, 0.3))
+    return g("".join(o), x, y, s, flip=flip)
+
+
+def lily_pad(x, y, s=1.0, water="#BFE0F5"):
+    return g(ellipse(0, 0, 48, 14, "#8FCFA3") + path("M0 0 L44 -6 L40 6 Z", fill=water)
+             + path("M-30 0 L-4 0 M-20 -7 L-4 -1 M-18 7 L-4 1", stroke="#7DBF93", sw=2), x, y, s)
+
+
+SQ = "#DDA57E"
+SQ_D = "#C88B63"
+SQ_L = "#FFEBD9"
+
+
+def squirrel(x, y, s=1.0, flip=False, rot=0):
+    """Ardilla con bellota. Mira a la derecha. Origen: patas."""
+    o = [ellipse(-26, -56, 22, 44, SQ_D, rot=-14) + circle(-16, -100, 19, SQ_D) + ellipse(-24, -56, 11, 30, "#D79A72", rot=-14)]
+    o.append(ellipse(6, -30, 22, 28, SQ) + ellipse(11, -26, 13, 19, SQ_L))
+    o.append(ellipse(0, -4, 12, 5, SQ_D) + ellipse(18, -4, 10, 5, SQ_D))
+    for ex in (4, 26):
+        o.append(path(f"M{ex - 6} -80 L{ex} -96 L{ex + 6} -80 Z", fill=SQ, stroke=SQ, sw=5))
+    o.append(circle(15, -66, 18, SQ))
+    o.append(eye(8, -69, 3.4) + eye(23, -69, 3.4))
+    o.append(blush(3, -59, 4, 2.6) + blush(28, -59, 4, 2.6))
+    o.append(circle(16, -61, 2.4, PLUM))
+    o.append(ellipse(21, -40, 6.5, 7.5, "#D6AE78") + path("M14 -45 Q21 -52 28 -45 Z", fill="#A9825F", stroke="#A9825F", sw=3))
+    o.append(circle(15, -38, 4.5, SQ_D) + circle(27, -38, 4.5, SQ_D))
+    return g("".join(o), x, y, s, flip=flip, rot=rot)
+
+
+def duck(x, y, s=1.0, flip=False, baby=False, swim=True):
+    """Pato (mama blanca o patito amarillo). Mira a la derecha. Origen: línea del agua o suelo."""
+    body, shade = ("#FFE89A", "#F5D676") if baby else ("#FFFDF6", "#E9E3D6")
+    o = []
+    if swim:
+        o.append(path("M-34 0 C-38 -26 -8 -30 8 -22 C20 -18 30 -14 32 0 Z", fill=body))
+        o.append(path("M-44 6 Q-34 1 -24 6 M18 6 Q28 1 38 6", stroke="#E3F2FC", sw=3))
+    else:
+        o.append(path("M-6 -4 L-6 4 L-12 6 M10 -4 L10 4 L4 6", stroke="#F7B267", sw=3.4))
+        o.append(path("M-34 -12 C-38 -38 -8 -42 8 -34 C20 -30 32 -26 30 -12 C26 2 -30 2 -34 -12 Z", fill=body))
+    dy = 0 if swim else -12
+    o.append(path(f"M-32 {-8 + dy} L-46 {-20 + dy} L-28 {-16 + dy} Z", fill=body, stroke=body, sw=4))
+    o.append(ellipse(-8, -12 + dy, 16, 8, shade, rot=-10))
+    o.append(circle(22, -36 + dy, 14, body))
+    o.append(path(f"M33 {-39 + dy} L46 {-35 + dy} L33 {-31 + dy} Z", fill="#F7B267", stroke="#F7B267", sw=3))
+    o.append(eye(26, -40 + dy, 2.8))
+    o.append(blush(24, -30 + dy, 3.6, 2.4))
+    return g("".join(o), x, y, s, flip=flip)
+
+
+def fish(x, y, s=1.0, rot=0):
+    """Pez saltando. Origen: centro."""
+    o = [path("M-18 0 L-36 -13 L-33 0 L-36 13 Z", fill="#98BBE2", stroke="#98BBE2", sw=4)]
+    o.append(path("M-6 -10 Q4 -22 12 -10 Z", fill="#98BBE2"))
+    o.append(ellipse(0, 0, 24, 12, "#AFCBEA") + ellipse(2, 4, 16, 5, "#D9E8F7"))
+    o.append(eye(13, -3, 2.6) + path("M20 3 Q22 5 24 3", stroke=PLUM, sw=1.6))
+    return g("".join(o), x, y, s, rot=rot)
+
+
+BEAV = "#C9A07E"
+BEAV_D = "#AD8364"
+BEAV_L = "#EFDCC8"
+
+
+def beaver(x, y, s=1.0, flip=False):
+    """Castor. Mira a la derecha. Origen: patas."""
+    o = [ellipse(-44, -10, 26, 11, "#9C7A62", rot=-14)
+         + path("M-60 -12 L-30 -16 M-56 -4 L-30 -8 M-50 -20 L-40 0", stroke="#B89580", sw=1.6)]
+    o.append(ellipse(-6, -34, 30, 33, BEAV) + ellipse(0, -28, 17, 23, BEAV_L))
+    o.append(ellipse(-14, -4, 12, 6, BEAV_D) + ellipse(10, -4, 12, 6, BEAV_D))
+    o.append(ellipse(-20, -42, 7, 13, BEAV_D, rot=20) + ellipse(16, -44, 7, 13, BEAV_D, rot=-20))
+    o.append(circle(2, -94, 6, BEAV_D) + circle(30, -94, 6, BEAV_D))
+    o.append(circle(16, -74, 24, BEAV))
+    o.append(ellipse(17, -63, 12, 9, BEAV_L))
+    o.append(rect(13, -58, 8, 9, WHITE, rx=2) + path("M17 -58 L17 -50", stroke="#E3DACE", sw=1.4))
+    o.append(ellipse(17, -69, 5, 3.6, PLUM))
+    o.append(eye(7, -80, 3.6) + eye(27, -80, 3.6))
+    o.append(blush(1, -66, 4.5, 3) + blush(33, -66, 4.5, 3))
+    return g("".join(o), x, y, s, flip=flip)
+
+
+def log_bridge(x0, y0, x1, y1, w=20):
+    """Tronco atravesado sobre el río."""
+    ang = math.degrees(math.atan2(y1 - y0, x1 - x0))
+    L = math.hypot(x1 - x0, y1 - y0)
+    body = (rect(0, -w / 2, L, w, "#C9A98F", rx=w / 2) + path(f"M14 -2 L{n(L * 0.45)} -2 M{n(L * 0.55)} 4 L{n(L - 20)} 4",
+                                                                   stroke="#B8977C", sw=2.4)
+            + ellipse(L, 0, w * 0.32, w / 2, "#E8D3BC") + ellipse(L, 0, w * 0.16, w * 0.26, "#D7BFA4"))
+    return f'<g transform="translate({n(x0)} {n(y0)}) rotate({n(ang)})">{body}</g>'
+
+
+BEAR = "#B98F72"
+BEAR_D = "#A47B60"
+BEAR_L = "#E9D2BC"
+
+
+def bear(x, y, s=1.0, flip=False, berries=False, expr="happy"):
+    """Oso pardo sentado (de frente). Origen: entre las patas."""
+    o = [ellipse(-34, -20, 24, 20, BEAR_D) + ellipse(34, -20, 24, 20, BEAR_D)]
+    o.append(ellipse(0, -62, 54, 60, BEAR) + ellipse(0, -54, 33, 41, BEAR_L))
+    o.append(ellipse(-38, -9, 15, 9, BEAR_L) + ellipse(38, -9, 15, 9, BEAR_L))
+    if berries:
+        o.append(path("M-48 -88 Q-46 -66 -16 -62", stroke=BEAR_D, sw=20) + path("M48 -88 Q46 -66 16 -62", stroke=BEAR_D, sw=20))
+        for bx, by, c in [(-8, -70, "#B48DD6"), (6, -72, "#E58FA6"), (-1, -80, "#B48DD6"), (12, -82, "#B48DD6"), (-12, -81, "#E58FA6")]:
+            o.append(circle(bx, by, 6, c) + circle(bx - 2, by - 2, 1.6, WHITE, op(0.7)))
+    else:
+        o.append(ellipse(-44, -64, 13, 26, BEAR_D, rot=16) + ellipse(44, -64, 13, 26, BEAR_D, rot=-16))
+    for sx in (-1, 1):
+        o.append(circle(sx * 32, -168, 15, BEAR) + circle(sx * 32, -168, 8, BEAR_L))
+    o.append(circle(0, -138, 42, BEAR))
+    o.append(ellipse(0, -122, 20, 15, BEAR_L))
+    o.append(ellipse(0, -129, 7.5, 5.5, PLUM) + ellipse(-2, -131, 2, 1.2, WHITE, extra=op(0.7)))
+    if expr == "joy":
+        o.append(happy_eye(-16, -146, 11, 3) + happy_eye(16, -146, 11, 3))
+        o.append(open_mouth(0, -119, 12))
+    else:
+        o.append(eye(-16, -146, 5.2) + eye(16, -146, 5.2))
+        o.append(path("M-7 -118 Q-3.5 -114 0 -119 Q3.5 -114 7 -118", stroke=PLUM, sw=2.4))
+    o.append(blush(-30, -124, 7, 4.5) + blush(30, -124, 7, 4.5))
+    return g("".join(o), x, y, s, flip=flip)
+
+
+def berry_bush(x, y, s=1.0):
+    bush = [("c", -26, -20, 24), ("c", 0, -34, 30), ("c", 28, -20, 24)]
+    o = [rect(-46, -20, 92, 20, "#93BBAE", rx=10), cloud_layer(bush, "#93BBAE", 4), cloud_layer(bush, "#A9CDBF")]
+    for bx, by in [(-28, -26), (-10, -44), (8, -30), (26, -36), (34, -18), (-38, -12), (0, -14)]:
+        o.append(circle(bx, by, 4.5, "#B48DD6"))
+    return g("".join(o), x, y, s)
+
+
+DEER = "#E3B793"
+DEER_D = "#CFA07B"
+DEER_L = "#FFF2E4"
+
+
+def deer(x, y, s=1.0, flip=False):
+    """Cierva amable (sin astas). Mira a la derecha. Origen: suelo, entre las patas."""
+    o = []
+    for lx in (-34, -20, 18, 32):
+        o.append(rect(lx - 4.5, -64, 9, 62, DEER_D, rx=4.5) + ellipse(lx, -2, 6, 3.5, "#A98163"))
+    o.append(ellipse(-50, -92, 8, 12, DEER_L, rot=-30))
+    o.append(ellipse(0, -76, 50, 28, DEER) + ellipse(0, -64, 34, 12, DEER_L))
+    for sx, sy in [(-22, -86), (-6, -92), (10, -86), (-30, -76), (2, -80)]:
+        o.append(circle(sx, sy, 3.6, DEER_L))
+    o.append(path("M30 -90 Q42 -118 50 -136", stroke=DEER, sw=24))
+    o.append(ellipse(44, -172, 7, 16, DEER, rot=-38) + ellipse(44, -172, 3.5, 10, "#F6C9C2", rot=-38))
+    o.append(ellipse(72, -172, 7, 16, DEER, rot=30) + ellipse(72, -172, 3.5, 10, "#F6C9C2", rot=30))
+    o.append(ellipse(58, -150, 22, 19, DEER) + ellipse(74, -142, 13, 10, DEER_L))
+    o.append(circle(84, -145, 4, PLUM))
+    o.append(eye(58, -154, 4.2) + path("M53 -161 L50 -164 M57 -162 L56 -166", stroke=PLUM, sw=1.6))
+    o.append(blush(62, -140, 5, 3))
+    o.append(path("M74 -136 Q78 -133 82 -136", stroke=PLUM, sw=1.8))
+    return g("".join(o), x, y, s, flip=flip)
+
+
+FOREST_MOUSE = ("#D7C2A8", "#C2AA8E", "#F5EBDD")
+
+
+# ------------------------------------------------------- naturaleza (Nimbus)
+
+def mountain(cx, base, w, h, fill, snow=None, snow_frac=0.3):
+    o = [path(f"M{n(cx - w / 2)} {n(base)} L{n(cx - 10)} {n(base - h + 12)} Q{n(cx)} {n(base - h)} {n(cx + 10)} {n(base - h + 12)} "
+              f"L{n(cx + w / 2)} {n(base)} Z", fill=fill, stroke=fill, sw=6)]
+    if snow:
+        k = snow_frac
+        lx, rx = cx - w / 2 * k, cx + w / 2 * k
+        sy = base - h * (1 - k)
+        o.append(path(f"M{n(cx - 10)} {n(base - h + 12)} Q{n(cx)} {n(base - h)} {n(cx + 10)} {n(base - h + 12)} L{n(rx)} {n(sy)} "
+                      f"Q{n(rx - w * 0.04)} {n(sy + 12)} {n(cx + w * 0.05)} {n(sy - 2)} Q{n(cx)} {n(sy + 14)} {n(cx - w * 0.06)} {n(sy)} "
+                      f"Q{n(lx + w * 0.03)} {n(sy + 12)} {n(lx)} {n(sy)} Z", fill=snow, stroke=snow, sw=4))
+    return "".join(o)
+
+
+def pine(x, y, s=1.0, c1="#9CCDB3", c2="#86BFA2"):
+    o = [rect(-5, -18, 10, 18, "#C9A98F", rx=3)]
+    for i, (w, top, bot) in enumerate([(46, -60, -14), (38, -88, -44), (28, -112, -72)]):
+        o.append(path(f"M{-w} {bot} L0 {top} L{w} {bot} Z", fill=c1 if i % 2 == 0 else c2, stroke=c1 if i % 2 == 0 else c2, sw=8))
+    return g("".join(o), x, y, s)
+
+
+def rock(x, y, s=1.0, c="#CFC8DA", d="#BBB3C9"):
+    return g(ellipse(0, -10, 26, 14, d) + ellipse(-3, -13, 22, 11, c) + ellipse(-9, -17, 6, 3, WHITE, extra=op(0.5)), x, y, s)
+
+
+def garden_tree(x, y, s=1.0, lush=True):
+    """Arbolito del jardín: hojas secas (lush=False) o verdes nuevas."""
+    leaf_c, shade = ("#B4E2C6", "#9FD6B6") if lush else ("#E2C994", "#CFB27A")
+    canopy = [("c", 0, -96, 40), ("c", -32, -74, 30), ("c", 32, -74, 30), ("c", -14, -120, 26), ("c", 18, -118, 26)]
+    o = [rect(-8, -60, 16, 60, "#D2B296", rx=5), path("M0 -44 L-18 -70 M0 -54 L16 -76", stroke="#D2B296", sw=6)]
+    o.append(cloud_layer(canopy, shade, 6) + cloud_layer(canopy, leaf_c))
+    if lush:
+        for lx, ly, r in [(-20, -100, -30), (14, -128, 20), (30, -84, 60), (-38, -70, -70), (4, -80, 10)]:
+            o.append(leaf(lx, ly, 14, r, "#CDEFD8", "#A8DDB5"))
+    else:
+        for lx, ly in [(-26, -98), (10, -122), (26, -80), (-4, -76)]:
+            o.append(path(f"M{lx - 5} {ly} L{lx + 5} {ly}", stroke="#C9A86C", sw=2))
+        o.append(leaf(54, -30, 14, 30, "#DCBF86", "#C9A86C") + leaf(-50, -14, 13, 160, "#DCBF86", "#C9A86C")
+                 + leaf(34, -6, 12, -20, "#DCBF86", "#C9A86C"))
+    return g("".join(o), x, y, s)
+
+
+# ------------------------------------------------------------- frutas (Benny)
+
+def apple(x, y, s=1.0, color="#F28B82", rot=0):
+    o = [path("M0 -12 C-8 -18 -20 -14 -20 -2 C-20 12 -10 20 0 16 C10 20 20 12 20 -2 C20 -14 8 -18 0 -12 Z", fill=color)]
+    o.append(path("M0 -12 Q1 -18 3 -22", stroke="#A9825F", sw=2.6))
+    o.append(leaf(3, -18, 13, -30, LEAF, STEM))
+    o.append(ellipse(-9, -4, 3, 5.5, WHITE, rot=20, extra=op(0.55)))
+    return g("".join(o), x, y, s, rot=rot)
+
+
+def pear(x, y, s=1.0, rot=0):
+    o = [path("M0 -22 C-7 -22 -8 -12 -10 -6 C-18 0 -18 18 0 18 C18 18 18 0 10 -6 C8 -12 7 -22 0 -22 Z", fill="#D8E79A")]
+    o.append(path("M0 -22 Q0 -27 3 -30", stroke="#A9825F", sw=2.4) + leaf(2, -26, 11, -20, LEAF, STEM))
+    o.append(ellipse(-6, 4, 2.6, 5, WHITE, rot=15, extra=op(0.5)))
+    return g("".join(o), x, y, s, rot=rot)
+
+
+def lemon(x, y, s=1.0, rot=0, color="#FFE58A"):
+    o = [path("M-20 0 Q-18 -14 0 -14 Q18 -14 20 0 Q18 14 0 14 Q-18 14 -20 0 Z", fill=color, stroke=color, sw=3)]
+    o.append(ellipse(-23, 0, 3.4, 3, color) + ellipse(23, 0, 3.4, 3, color))
+    o.append(ellipse(-7, -5, 5, 2.4, WHITE, rot=-10, extra=op(0.55)))
+    return g("".join(o), x, y, s, rot=rot)
+
+
+def orange(x, y, s=1.0):
+    return g(circle(0, 0, 16, "#FFC27A") + circle(-5, -5, 3.6, WHITE, op(0.5)) + circle(0, -14, 2, "#E8A55E")
+             + leaf(1, -15, 12, -25, LEAF, STEM), x, y, s)
+
+
+def cherries(x, y, s=1.0):
+    return g(path("M-8 4 Q-6 -14 4 -24 M8 6 Q8 -10 4 -24", stroke="#8CCB9B", sw=2.4) + leaf(4, -24, 13, -10, LEAF, STEM)
+             + circle(-9, 8, 8, "#E8707F") + circle(9, 10, 8, "#E8707F")
+             + circle(-11, 5, 2.2, WHITE, op(0.6)) + circle(7, 7, 2.2, WHITE, op(0.6)), x, y, s)
+
+
+def banana(x, y, s=1.0, rot=0):
+    return g(path("M-26 -6 Q-2 22 26 -10 Q28 -14 24 -14 Q0 8 -22 -12 Q-28 -12 -26 -6 Z", fill="#FFE28A", stroke="#FFE28A", sw=3)
+             + path("M-21 -8 Q0 10 22 -11", stroke="#F2CC66", sw=2) + circle(-26, -9, 2.6, "#A9825F") + circle(26, -12, 2.2, "#A9825F"),
+             x, y, s, rot=rot)
+
+
+def grapes(x, y, s=1.0):
+    o = [path("M0 -22 Q2 -30 6 -32", stroke="#A9825F", sw=2.6), leaf(4, -28, 14, -25, LEAF, STEM)]
+    for gx, gy in [(-10, -12), (0, -14), (10, -12), (-5, -2), (5, -2), (-10, 8), (0, 8), (10, 8), (-5, 18), (5, 18), (0, 27)]:
+        o.append(circle(gx, gy, 6.6, "#B9A3DE") + circle(gx - 2, gy - 2, 1.8, WHITE, op(0.55)))
+    return g("".join(o), x, y, s)
+
+
+def watermelon_slice(x, y, s=1.0, rot=0):
+    o = [path("M-30 0 A30 30 0 0 0 30 0 Z", fill="#9ED7AE"), path("M-26 0 A26 26 0 0 0 26 0 Z", fill="#F3FAE8"),
+         path("M-23 0 A23 23 0 0 0 23 0 Z", fill="#F7A1AE")]
+    for sx, sy in [(-12, 6), (0, 10), (12, 6), (-6, 15), (6, 15)]:
+        o.append(ellipse(sx, sy, 1.6, 2.6, PLUM, extra=op(0.7)))
+    return g("".join(o), x, y, s, rot=rot)
+
+
+def blueberries(x, y, s=1.0):
+    return g("".join(circle(bx, by, 5, "#8FA6D9") + circle(bx, by - 2.6, 1.4, "#6F86BE")
+                     for bx, by in [(-6, 0), (5, -1), (0, -8), (-1, 7)]), x, y, s)
+
+
+def basket(x, y, s=1.0, items=""):
+    o = [path("M-30 -24 Q0 -58 30 -24", stroke="#D6B07E", sw=5), items]
+    o.append(path("M-36 -22 L36 -22 L28 6 Q0 12 -28 6 Z", fill="#E8C795"))
+    o.append(path("M-32 -12 L33 -12 M-30 -2 L31 -2 M-18 -22 L-15 8 M0 -22 L0 10 M18 -22 L15 8", stroke="#D6B07E", sw=2.4))
+    o.append(rect(-38, -26, 76, 8, "#D6B07E", rx=4))
+    return g("".join(o), x, y, s)
+
+
+def fruit_tree(x, y, s=1.0, fruit="apple"):
+    """Árbol frutal (manzano o limonero). Origen: base del tronco."""
+    canopy = [("c", 0, -176, 62), ("c", -50, -144, 46), ("c", 50, -144, 46), ("c", -28, -210, 44), ("c", 30, -208, 44)]
+    o = [rect(-9, -130, 18, 130, "#D2B296", rx=6), path("M0 -96 L-26 -126 M0 -110 L22 -134", stroke="#D2B296", sw=8)]
+    o.append(cloud_layer(canopy, "#9FD6B6", 8) + cloud_layer(canopy, "#B4E2C6"))
+    spots = [(-60, -150), (-30, -186), (2, -214), (36, -184), (62, -146), (-8, -152), (24, -140), (-40, -216), (44, -222)]
+    for fx, fy in spots:
+        o.append(apple(fx, fy, 0.62) if fruit == "apple" else lemon(fx, fy, 0.55, rot=-20))
+    return g("".join(o), x, y, s)
+
+
+def strawberry_plant(x, y, s=1.0, flowers=False, berries=True):
+    o = []
+    for rot, L in [(-150, 30), (-110, 34), (-70, 34), (-30, 30)]:
+        o.append(leaf(0, -4, L, rot, "#9ED7AE", "#86C79A"))
+    if flowers:
+        for fx, fy in [(-14, -36), (12, -38)]:
+            o.append("".join(circle(fx + 5 * math.cos(math.radians(a)), fy + 5 * math.sin(math.radians(a)), 4.4, WHITE)
+                             for a in range(0, 360, 72)) + circle(fx, fy, 2.6, "#FFE38A"))
+    if berries:
+        o.append(strawberry(-18, -2, 0.75, 15) + strawberry(16, 0, 0.7, -20))
+    return g("".join(o), x, y, s)
+
+
+def lemon_sapling(x, y, s=1.0, bump=False):
+    """Limonero bebé (ch1) o con un limoncito verde (ch2)."""
+    o = [path("M0 0 C-2 -30 3 -60 0 -92", stroke="#C9A98F", sw=5)]
+    for ly, L, rot in [(-38, 24, -30), (-52, 22, -150), (-66, 22, -35), (-78, 20, -145), (-92, 18, -80)]:
+        o.append(leaf(0, ly, L, rot, "#B4E2C0", "#8CCB9B"))
+    if bump:
+        o.append(lemon(14, -58, 0.6, rot=30, color="#A9D46A"))
+    return g("".join(o), x, y, s)
+
+
+def seed_bag(x, y, s=1.0):
+    """Bolsita de papel de la abuela con semillas."""
+    o = [path("M-22 0 L-24 -46 L24 -46 L22 0 Z", fill="#EBD3AE")]
+    o.append(path("M-24 -46 L-20 -54 L-12 -48 L-4 -55 L4 -48 L12 -55 L20 -48 L24 -46 Z", fill="#E0C49B"))
+    o.append(apple(0, -22, 0.55) + path("M-14 -6 L14 -6", stroke="#D9BC92", sw=2))
+    for sx, sy in [(30, -2), (36, 2), (26, 4)]:
+        o.append(ellipse(sx, sy, 2.6, 3.6, "#B98B6B"))
+    return g("".join(o), x, y, s)
+
+
+def pitcher(x, y, s=1.0):
+    """Jarra de limonada rosada."""
+    o = [path("M18 -44 C34 -44 34 -16 18 -16", stroke="#E4F1FA", sw=5)]
+    o.append(path("M-18 0 L-20 -52 L20 -52 L18 0 Z", fill="#E4F1FA"))
+    o.append(path("M-17 -2 L-18 -36 L18 -36 L17 -2 Z", fill="#F9C3CF"))
+    o.append(lemon(0, -40, 0.4, color="#FFE58A") + ellipse(-9, -24, 3, 9, WHITE, extra=op(0.5)))
+    return g("".join(o), x, y, s)
+
+
 # ----------------------------------------------------------------- archivos
 
 def common_defs():
@@ -755,16 +1148,24 @@ def pip_ch1():
     o.append(moon(120, 100, 34))
     o.append(path("M0 360 Q200 300 420 345 Q620 385 800 330 L800 600 L0 600 Z", fill="#C9DFD8"))
     o.append(path("M0 440 Q400 380 800 440 L800 600 L0 600 Z", fill="#AFD2C2"))
-    o.append(blades(rng, 70, 0, 800, 425, 470, 30, 70, ["#9CCAB5", "#A6D0BC", "#93C2AC"]))
-    for fx, fy in [(80, 470), (160, 455), (690, 465), (740, 480), (430, 450)]:
+    o.append(blades(rng, 50, 0, 540, 425, 470, 30, 70, ["#9CCAB5", "#A6D0BC", "#93C2AC"]))
+    # el estanque con el nenúfar y la rana
+    o.append(ellipse(660, 458, 118, 26, "#BFE0F5")
+             + path("M580 452 Q598 448 616 452 M690 470 Q708 466 726 470", stroke="#E3F2FC", sw=3))
+    o.append(lily_pad(612, 466, 0.5) + lily_pad(700, 462, 0.85))
+    o.append(frog(700, 460, 0.62, expr="happy"))
+    o.append(blade(548, 470, 40, -6, "#93C2AC") + blade(774, 466, 44, 8, "#9CCAB5") + blade(786, 470, 34, -4, "#A6D0BC"))
+    for fx, fy in [(80, 470), (160, 455), (430, 450)]:
         o.append(flower(fx, fy, 1.0, "#FFFFFF", "#FFE38A", 40))
-    o.append(twinkle(565, 505, 0.78, "cry", "dim", rot=18))
-    o.append(pip(300, 548, 1.2, pose="step", expr="curious", look=(3, 1), lean=5))
+    o.append(twinkle(545, 512, 0.78, "cry", "dim", rot=18))
+    o.append(rabbit(108, 552, 0.66, expr="sleepy"))
+    o.append(milo(202, 560, 0.6, pal=FOREST_MOUSE))
+    o.append(pip(330, 548, 1.2, pose="step", expr="curious", look=(3, 1), lean=5))
     o.append(blades(rng, 40, 0, 800, 560, 610, 30, 60, ["#93C2AC", "#8BBDA6", "#9CCAB5"]))
-    o.append(blade(520, 548, 52, -6, "#93C2AC") + blade(612, 552, 46, 8, "#8BBDA6") + blade(592, 556, 40, -4, "#9CCAB5"))
-    for fx, fy in [(60, 590), (220, 600), (700, 595), (760, 585)]:
+    o.append(blade(500, 548, 52, -6, "#93C2AC") + blade(592, 552, 46, 8, "#8BBDA6") + blade(572, 556, 40, -4, "#9CCAB5"))
+    for fx, fy in [(60, 590), (240, 600), (700, 595), (760, 585)]:
         o.append(flower(fx, fy, 1.2, "#FFFFFF", "#FFE38A", 46))
-    for fx, fy in [(420, 380), (690, 360), (210, 330), (630, 420)]:
+    for fx, fy in [(440, 380), (690, 360), (230, 330), (520, 420)]:
         o.append(circle(fx, fy, 9, url("glow")) + circle(fx, fy, 2.4, "#FFF6C8"))
     return defs, "".join(o)
 
@@ -778,12 +1179,20 @@ def pip_ch2():
     o.append(path("M600 168 Q610 230 580 290 Q560 340 600 400", stroke="#E3EEE9", sw=6, extra=' stroke-dasharray="2 14"'))
     o.append(sparkle(632, 150, 12, "#FFF6C8"))
     o.append(path("M0 420 Q200 390 420 425 Q620 455 800 420 L800 600 L0 600 Z", fill="#C8E3D6"))
+    # orilla de enfrente: el oso con sus moras
+    o.append(berry_bush(648, 446, 0.62))
+    o.append(bear(728, 446, 0.4, berries=True))
+    # el río con patos y un pez
     o.append(path("M0 470 C200 440 400 500 800 455 L800 505 C400 550 200 490 0 522 Z", fill="#BFE0F5"))
-    o.append(path("M60 478 Q90 472 120 478 M300 490 Q330 484 360 490 M560 478 Q590 472 620 478 M700 470 Q725 465 750 470",
-                  stroke="#E3F2FC", sw=3))
-    for sx, sy, rx in [(470, 498, 26), (560, 486, 24), (650, 476, 22), (735, 468, 20)]:
-        o.append(ellipse(sx, sy + 4, rx, 9, "#B9AFCB") + ellipse(sx, sy, rx, 9, "#DCD4E6"))
+    o.append(path("M60 478 Q90 472 120 478 M420 500 Q450 494 480 500 M700 470 Q725 465 750 470", stroke="#E3F2FC", sw=3))
+    o.append(duck(252, 503, 0.55) + duck(296, 506, 0.36, baby=True) + duck(326, 504, 0.34, baby=True))
+    o.append(fish(372, 452, 0.62, rot=-35))
+    o.append(drop(352, 480, 0.5, "#E3F2FC") + drop(392, 478, 0.45, "#E3F2FC") + drop(372, 486, 0.4, "#E3F2FC"))
     o.append(path("M0 525 C200 495 400 548 800 505 L800 600 L0 600 Z", fill="#B3D7C6"))
+    # el tronco que empujó el castor
+    o.append(log_bridge(590, 532, 668, 452, 18))
+    o.append(beaver(712, 566, 0.56, flip=True))
+    # el árbol del abuelo Búho, con la ardilla bajando por el tronco
     o.append(path("M108 548 C122 450 118 330 136 250 L178 250 C190 330 186 450 206 548 Z", fill="#C9A98F"))
     o.append(path("M92 556 Q116 546 122 516 L192 516 Q200 546 226 556 Z", fill="#C9A98F"))
     o.append(ellipse(160, 557, 82, 9, "#A3CBB8"))
@@ -792,12 +1201,13 @@ def pip_ch2():
     canopy = [("c", 150, 140, 92), ("c", 66, 190, 58), ("c", 236, 172, 60), ("c", 104, 80, 56), ("c", 200, 74, 56)]
     o.append(cloud_layer(canopy, "#93BBAE", 8) + cloud_layer(canopy, "#A9CDBF"))
     o.append(circle(120, 120, 6, "#C3DDD3") + circle(190, 160, 5, "#C3DDD3") + circle(80, 200, 5, "#C3DDD3"))
+    o.append(squirrel(206, 327, 0.46))
     o.append(owl(286, 308, 0.74))
-    for tx, ty in [(40, 560), (300, 575), (720, 560), (560, 590), (100, 562), (222, 566)]:
+    for tx, ty in [(40, 560), (300, 575), (560, 590), (100, 562), (230, 566), (780, 575)]:
         o.append(tuft(tx, ty, 1.1, "#98C6B1"))
-    o.append(pip(460, 578, 1.0, pose="hold", expr="happy", look=(-3, -3), head_rot=-9,
+    o.append(pip(470, 578, 1.0, pose="hold", expr="happy", look=(-3, -3), head_rot=-9,
                  holding=twinkle(0, -60, 0.6, "happy", "normal")))
-    for fx, fy in [(60, 470), (690, 385), (380, 360), (250, 420)]:
+    for fx, fy in [(60, 470), (690, 385), (420, 360), (250, 420)]:
         o.append(circle(fx, fy, 9, url("glow")) + circle(fx, fy, 2.4, "#FFF6C8"))
     return defs, "".join(o)
 
@@ -806,16 +1216,25 @@ def pip_ch3():
     rng = random.Random(31)
     defs = lin("sky", [(0, "#A99CD8"), (0.6, "#D7CCF0"), (1, "#F9D9D2")])
     o = [rect(0, 0, 800, 600, url("sky"))]
-    o.append(starfield(rng, 44, 30, 770, 25, 430, avoid=[(540, 170, 120), (300, 330, 110)]))
+    o.append(starfield(rng, 40, 30, 770, 25, 380, avoid=[(540, 170, 120), (300, 330, 110)]))
     o.append(path("M0 500 Q200 450 400 490 Q600 525 800 470 L800 600 L0 600 Z", fill="#CBE0D9"))
     o.append(path("M0 600 L0 520 Q300 400 600 470 Q700 492 800 520 L800 600 Z", fill="#B3D7C6"))
-    for i, (sx, sy, r) in enumerate([(370, 300, 6), (410, 268, 7), (448, 236, 8), (485, 210, 6)]):
+    for sx, sy, r in [(370, 300, 6), (410, 268, 7), (448, 236, 8), (485, 210, 6)]:
         o.append(sparkle(sx, sy, r, "#FFF6C8", 0.9))
     o.append(twinkle(545, 170, 1.0, "bright", "big", rot=-8))
+    # todos los amigos de Pip en la cima
+    o.append(deer(58, 496, 0.56))
+    o.append(owl(742, 510, 0.34))
+    o.append(squirrel(686, 494, 0.52, flip=True))
+    o.append(duck(600, 474, 0.44, swim=False, flip=True) + duck(642, 484, 0.34, baby=True, swim=False, flip=True))
+    o.append(bear(178, 470, 0.5, expr="joy"))
+    o.append(frog(492, 454, 0.5, expr="joy"))
+    o.append(milo(548, 462, 0.5, expr="joy", pal=FOREST_MOUSE))
     o.append(pip(290, 452, 1.15, pose="wave", expr="joy", head_rot=-6))
-    for tx, ty in [(80, 540), (150, 520), (430, 470), (520, 500), (650, 520), (740, 560)]:
+    o.append(rabbit(430, 450, 0.56, expr="joy", flip=True))
+    for tx, ty in [(110, 545), (380, 470), (520, 500), (650, 525), (740, 565), (250, 520)]:
         o.append(tuft(tx, ty, 1.1, "#98C6B1"))
-    for fx, fy, c in [(120, 540, "#F7B7C3"), (470, 490, "#FFF1BF"), (600, 515, "#E4DCF7"), (700, 545, "#F7B7C3")]:
+    for fx, fy, c in [(120, 560, "#F7B7C3"), (460, 500, "#FFF1BF"), (610, 530, "#E4DCF7"), (700, 560, "#F7B7C3")]:
         o.append(flower(fx, fy, 1.1, c))
     return defs, "".join(o)
 
@@ -858,15 +1277,40 @@ def nimbus_ch1():
     o = [rect(0, 0, 800, 600, url("sky"))]
     clip, stripes = fields("M0 410 Q200 362 400 392 Q600 424 800 372 L800 600 L0 600 Z", ["#CFEFE3", "#BEE6D3", "#E6F2CB", "#CFEFE3"])
     defs += clip
+    o.append(sun(716, 88, 30))
+    # montañas detrás del bosque
+    o.append(mountain(130, 400, 340, 190, "#C9C3E3", snow="#F6F3FC"))
+    o.append(mountain(390, 400, 400, 236, "#BDB6DC", snow="#F6F3FC"))
+    o.append(mountain(650, 400, 340, 128, "#CBC5E4"))
     o.append(path("M0 380 Q160 330 330 360 Q520 395 800 340 L800 420 L0 420 Z", fill="#D9EADF"))
     o.append(rain_field(rng, 130, 380, 210, 400, 26) + rain_field(rng, 420, 600, 190, 390, 20))
     o.append(stripes)
+    # el río entre los campos
+    o.append(path("M552 410 C530 446 600 470 548 516 C508 552 470 572 462 600 L570 600 C578 570 616 552 646 518 "
+                  "C694 466 606 444 576 410 Z", fill="#BFE0F5"))
+    o.append(path("M560 440 Q570 436 580 440 M560 530 Q575 524 590 530 M500 580 Q515 574 530 580", stroke="#E3F2FC", sw=3))
+    # el bosque
+    for px, py, ps, c1, c2 in [(30, 404, 0.62, "#9CCDB3", "#86BFA2"), (80, 398, 0.78, "#A6D3BB", "#8FC5A9"),
+                               (138, 392, 0.66, "#9CCDB3", "#86BFA2"), (190, 392, 0.82, "#A6D3BB", "#8FC5A9"),
+                               (246, 394, 0.64, "#9CCDB3", "#86BFA2"), (296, 398, 0.74, "#A6D3BB", "#8FC5A9")]:
+        o.append(pine(px, py, ps, c1, c2))
+    o.append(round_tree(112, 410, 0.7) + round_tree(222, 408, 0.6) + round_tree(330, 410, 0.62))
     o.append(big_cloud(250, 150, 0.95, "kind"))
     o.append(big_cloud(510, 128, 0.78, "sleepy", flip=True))
     o.append(nimbus(680, 292, 0.72, "strain"))
-    for tx, ty in [(60, 560), (260, 585), (520, 570), (730, 580)]:
+    for tx, ty in [(60, 560), (260, 585), (700, 570), (380, 590)]:
         o.append(tuft(tx, ty, 1.1, "#A7D9C3"))
     return defs, "".join(o)
+
+
+def valley_backdrop():
+    """Montaña nevada, lago y valle con rocas detrás del jardín (capítulos 2 y 3)."""
+    o = [mountain(338, 414, 270, 118, "#D8D2EC")]
+    o.append(mountain(168, 414, 390, 204, "#C9C3E3", snow="#FBFAFE"))
+    o.append(ellipse(478, 400, 150, 16, "#A9D2F0") + path("M404 398 Q422 394 440 398 M500 402 Q518 398 536 402", stroke="#D6EBFA", sw=2.6))
+    for rx, ry, rs in [(36, 418, 0.7), (78, 420, 0.5), (262, 416, 0.8), (300, 420, 0.55)]:
+        o.append(rock(rx, ry, rs))
+    return "".join(o)
 
 
 def garden(lush, shadow=False):
@@ -875,8 +1319,12 @@ def garden(lush, shadow=False):
     o.append(path("M0 420 Q400 388 800 420 L800 600 L0 600 Z", fill="#CFEFE3" if lush else "#E9E4C2"))
     o.append(house(640, 468, 1.0))
     o.append(path("M0 470 Q400 440 800 470 L800 600 L0 600 Z", fill="#BDE6D2" if lush else "#DEDAB4"))
+    o.append(garden_tree(84, 512, 0.82, lush))
     o.append(fence(150, 520, 492, 38))
     o.append(ellipse(330, 545, 210, 34, "#D9BFA4" if lush else "#E2CDB2"))
+    if not lush:
+        o.append(path("M178 540 L198 548 L214 541 M262 560 L280 552 L298 560 L312 554 M386 536 L402 544 L420 538 "
+                      "M448 556 L466 550 L480 558", stroke="#CBAE8C", sw=2.4))
     if shadow:
         o.append(ellipse(330, 548, 130, 20, PLUM, extra=op(0.07)))
     spots = [(180, 545, "#F7B7C3"), (230, 560, "#E4DCF7"), (270, 538, "#FFD9CC"), (410, 540, "#F7B7C3"),
@@ -887,8 +1335,8 @@ def garden(lush, shadow=False):
         else:
             o.append(flower(fx, fy, 1.35, {"#F7B7C3": "#E9CFC8", "#E4DCF7": "#DCD6E0", "#FFD9CC": "#EED8C4"}[c], "#E8D6A0", 40, droopy=True))
     o.append(daisy(330, 560, 1.25, droopy=not lush))
-    for tx, ty in [(40, 560), (110, 590), (600, 585), (740, 570)]:
-        o.append(tuft(tx, ty, 1.2, "#9FD6BF" if lush else "#CBCC9E"))
+    for tx, ty in [(40, 575), (130, 592), (600, 585), (740, 570)]:
+        o.append(tuft(tx, ty, 1.2, "#9FD6BF" if lush else "#CBB98E"))
     return "".join(o)
 
 
@@ -896,6 +1344,7 @@ def nimbus_ch2():
     defs = lin("sky", [(0, "#CFE4F5"), (0.7, "#F3F1DC"), (1, "#FFF1C4")])
     o = [rect(0, 0, 800, 600, url("sky"))]
     o.append(sun(120, 105, 44))
+    o.append(valley_backdrop())
     o.append(garden(lush=False, shadow=True))
     o.append(nimbus(330, 200, 1.0, "sad"))
     return defs, "".join(o)
@@ -907,7 +1356,8 @@ def nimbus_ch3():
     o = [rect(0, 0, 800, 600, url("sky"))]
     o.append(sun(690, 112, 40))
     o.append(cloud(640, 140, 0.9))
-    o.append(rainbow(400, 470, 330, 16, 0.9))
+    o.append(valley_backdrop())
+    o.append(rainbow(400, 470, 330, 16, 0.92))
     o.append(garden(lush=True))
     o.append(rain_field(rng, 250, 410, 300, 480, 14, "#A3CDF0", 0.8))
     o.append(nimbus(330, 200, 1.0, "joy", rain=True))
@@ -921,17 +1371,17 @@ def nimbus_ch3():
 def benny_cover():
     defs = lin("sky", [(0, "#CDEEDF"), (0.6, "#E6F7EE"), (1, "#F8FCF6")])
     o = [rect(0, 0, 600, 800, url("sky"))]
-    o.append(sun(470, 130, 40))
-    o.append(cloud(130, 150, 0.9) + cloud(380, 230, 0.6, o=0.9))
+    o.append(sun(470, 120, 38))
+    o.append(cloud(130, 140, 0.9) + cloud(330, 220, 0.6, o=0.9))
     o.append(path("M0 520 Q150 470 300 500 Q460 530 600 480 L600 800 L0 800 Z", fill="#D3F0E1"))
-    o.append(sunflower(110, 640, 300, tilt=-10) + sunflower(500, 650, 330, tilt=12) + sunflower(200, 600, 220, 0.85, tilt=-4)
-             + sunflower(410, 600, 250, 0.8, tilt=8))
+    o.append(fruit_tree(118, 640, 1.0, "apple") + fruit_tree(486, 640, 1.0, "lemon"))
     o.append(path("M0 650 Q300 590 600 650 L600 800 L0 800 Z", fill="#BCE5CF"))
-    o.append(benny(300, 715, 1.55, pose="hold", expr="joy", holding=carrot(30, -82, 1.0, rot=40)))
-    for tx, ty in [(70, 700), (130, 750), (470, 705), (540, 750)]:
+    for sx, sy, ss in [(84, 722, 1.1), (520, 728, 1.1), (186, 768, 0.9), (420, 770, 0.9)]:
+        o.append(strawberry_plant(sx, sy, ss))
+    o.append(benny(300, 715, 1.55, pose="wave", expr="joy"))
+    o.append(apple(386, 518, 1.35))  # la manzana en la pata levantada
+    for tx, ty in [(40, 700), (140, 745), (470, 700), (565, 760)]:
         o.append(tuft(tx, ty, 1.3, "#9FD6BF"))
-    for fx, fy, c in [(100, 735, "#FFF1BF"), (500, 730, "#F7B7C3"), (210, 770, "#E4DCF7"), (400, 772, "#FFD9CC")]:
-        o.append(flower(fx, fy, 1.1, c))
     return defs, "".join(o)
 
 
@@ -945,11 +1395,13 @@ def benny_ch1():
     o.append(path("M0 410 Q400 380 800 410 L800 600 L0 600 Z", fill="#C2E8D4"))
     o.append(soil_row(80, 720, 448, 22))
     o.append(soil_row(40, 760, 500, 26))
+    o.append(lemon_sapling(522, 494, 0.85))
     o.append(benny(300, 548, 1.1, pose="plant", expr="happy", look=(2, 2)))
     o.append(soil_row(0, 800, 572, 32))
     o.append(watering_can(440, 552, 0.95))
-    o.append(tilly(650, 545, 0.85, flip=True, expr="calm"))
-    for sx, sy in [(200, 538), (240, 544), (520, 542)]:
+    o.append(tilly(660, 545, 0.85, flip=True, expr="calm"))
+    o.append(seed_bag(172, 590, 1.05))
+    for sx, sy in [(222, 540), (250, 546), (560, 542)]:
         o.append(ellipse(sx, sy, 3.6, 5, "#B98B6B"))
     for tx, ty in [(30, 600), (790, 598)]:
         o.append(tuft(tx, ty, 1.2, "#9FD6BF"))
@@ -961,15 +1413,19 @@ def benny_ch2():
     o = [rect(0, 0, 800, 600, url("sky"))]
     o.append(sun(680, 95, 38))
     o.append(cloud(170, 100, 0.85) + cloud(450, 70, 0.6, o=0.85))
-    o.append(round_tree(60, 344, 1.0) + round_tree(110, 340, 0.75) + round_tree(560, 358, 0.8))
+    o.append(round_tree(60, 344, 1.0) + round_tree(110, 340, 0.75) + round_tree(520, 358, 0.8))
     o.append(path("M0 360 Q200 320 420 350 Q620 378 800 335 L800 600 L0 600 Z", fill="#D5F0E2"))
     o.append(path("M0 410 Q400 380 800 410 L800 600 L0 600 Z", fill="#C2E8D4"))
     o.append(soil_row(80, 720, 448, 22))
-    for sx in range(150, 680, 62):
+    for sx in range(150, 640, 62):
         o.append(sprout(sx, 438, 0.9))
+    o.append(lemon_sapling(700, 444, 1.15, bump=True))
     o.append(soil_row(40, 760, 500, 26))
-    for sx in range(110, 720, 70):
-        o.append(sprout(sx, 488, 1.1))
+    for i, sx in enumerate(range(110, 720, 70)):
+        if i % 2 == 0:
+            o.append(strawberry_plant(sx, 492, 0.85, flowers=True, berries=False))
+        else:
+            o.append(sprout(sx, 488, 1.1))
     o.append(path("M290 540 Q300 528 310 540 M330 546 Q345 532 360 546", stroke="#9FD6BF", sw=3.5))
     o.append(benny(330, 500, 1.0, pose="hop", expr="joy"))
     o.append(soil_row(0, 800, 572, 32))
@@ -979,6 +1435,7 @@ def benny_ch2():
     o.append(leaf(640, 585, 120, -72, "#B4E2C0", "#8CCB9B"))
     o.append(milo(600, 545, 0.95, body=False))
     o.append(leaf(500, 578, 196, -8, "#9ED7AE", "#86C79A"))
+    o.append(blueberries(600, 506, 0.9))
     o.append(milo_paws(600, 545, 0.95))
     return defs, "".join(o)
 
@@ -989,37 +1446,43 @@ def benny_ch3():
              f'<rect width="40" height="40" fill="#FFF4EC"/><rect width="20" height="40" fill="#FFC6B4" opacity="0.6"/>'
              f'<rect width="40" height="20" fill="#FFC6B4" opacity="0.6"/></pattern>')
     o = [rect(0, 0, 800, 600, url("sky"))]
-    o.append(sun(660, 250, 54))
+    o.append(sun(400, 214, 50))
     o.append(path("M0 330 Q200 300 420 325 Q620 350 800 315 L800 600 L0 600 Z", fill="#D9EDCB"))
-    for sx, h, t, sc in [(70, 290, -8, 1.0), (180, 250, 4, 0.9), (560, 240, -4, 0.85), (730, 300, 10, 1.0), (320, 230, 6, 0.75)]:
-        o.append(sunflower(sx, 420, h, sc, tilt=t))
+    o.append(fruit_tree(96, 420, 0.86, "apple") + fruit_tree(704, 420, 0.86, "lemon"))
     o.append(path("M0 400 Q400 370 800 400 L800 600 L0 600 Z", fill="#CBE6BC"))
     o.append(path("M170 448 L630 448 L720 572 L80 572 Z", fill=url("check")))
-    o.append(benny(220, 520, 0.92, pose="hold", expr="joy", holding=strawberry(0, -64, 1.2)))
-    o.append(cake(400, 500, 1.0))
-    o.append(bowl(500, 478, 0.9, strawberry(-14, -18, 0.9) + strawberry(6, -22, 0.9, 20) + strawberry(20, -14, 0.8, -15)))
-    o.append(tomato(300, 470, 1.0) + tomato(322, 476, 0.85))
-    o.append(tilly(600, 548, 0.72, flip=True, expr="calm"))
-    o.append(milo(450, 556, 0.95, expr="joy", holding=strawberry(0, -36, 0.7)))
-    o.append(crow(700, 472, 0.85, flip=True))
-    for tx, ty in [(40, 590), (770, 595), (60, 470)]:
+    # la fruta sobre el mantel
+    o.append(apple(338, 470, 0.9) + apple(366, 476, 0.8, "#B8DD8C") + pear(392, 468, 0.85))
+    o.append(cherries(512, 466, 0.9))
+    o.append(basket(596, 486, 0.82, orange(-16, -24, 0.9) + orange(10, -28, 0.9) + orange(0, -14, 0.85) + orange(22, -16, 0.8)))
+    salad = (orange(-18, -18, 0.6) + strawberry(-2, -22, 0.7) + grapes(16, -20, 0.4)
+             + banana(4, -12, 0.5, 10) + cherries(-14, -30, 0.5) + apple(14, -30, 0.45))
+    o.append(bowl(452, 506, 1.35, salad))
+    o.append(watermelon_slice(336, 548, 0.9, -8) + watermelon_slice(378, 556, 0.85, 10))
+    o.append(pitcher(190, 532, 0.72))
+    o.append(grandma_bunny(104, 548, 0.8))
+    o.append(benny(268, 525, 0.9, pose="hold", expr="joy", holding=strawberry(0, -64, 1.2)))
+    o.append(tilly(658, 552, 0.7, flip=True, expr="calm"))
+    o.append(banana(566, 566, 0.75, -10))
+    o.append(milo(520, 562, 0.9, expr="joy", holding=grapes(0, -40, 0.5)))
+    for tx, ty in [(30, 590), (775, 595), (40, 470), (760, 470)]:
         o.append(tuft(tx, ty, 1.2, "#A9D29A"))
     return defs, "".join(o)
 
 
 SCENES = [
     ("pip", "cover", 600, 800, "Pip the fox holding a glowing little star at night", pip_cover),
-    ("pip", "ch1", 800, 600, "Pip finds a crying little star in the meadow", pip_ch1),
-    ("pip", "ch2", 800, 600, "Pip and Twinkle ask Grandpa Owl the way to the tallest hill", pip_ch2),
-    ("pip", "ch3", 800, 600, "Twinkle floats back up to the sky while Pip waves", pip_ch3),
+    ("pip", "ch1", 800, 600, "Pip finds a crying little star in the meadow, with a frog, a rabbit and a mouse", pip_ch1),
+    ("pip", "ch2", 800, 600, "Pip and Twinkle by the river with Grandpa Owl, a squirrel, ducks, a fish, a beaver and a bear", pip_ch2),
+    ("pip", "ch3", 800, 600, "Twinkle floats back up to the sky while Pip and his animal friends wave", pip_ch3),
     ("nimbus", "cover", 600, 800, "Nimbus the little cloud smiling over a rainbow and a daisy", nimbus_cover),
-    ("nimbus", "ch1", 800, 600, "Big rain clouds over the fields while little Nimbus tries to rain", nimbus_ch1),
-    ("nimbus", "ch2", 800, 600, "Nimbus finds a thirsty garden next to a little yellow house", nimbus_ch2),
+    ("nimbus", "ch1", 800, 600, "Big rain clouds over the mountains, the forest and the river while little Nimbus tries to rain", nimbus_ch1),
+    ("nimbus", "ch2", 800, 600, "Nimbus finds a thirsty garden below a snowy mountain and a lake", nimbus_ch2),
     ("nimbus", "ch3", 800, 600, "Nimbus rains on the garden and a rainbow appears", nimbus_ch3),
-    ("benny", "cover", 600, 800, "Benny the bunny holding a carrot among sunflowers", benny_cover),
-    ("benny", "ch1", 800, 600, "Benny plants tiny seeds while Tilly the turtle walks by", benny_ch1),
-    ("benny", "ch2", 800, 600, "Benny hops next to the first sprouts while Milo peeks from a leaf", benny_ch2),
-    ("benny", "ch3", 800, 600, "Benny, Tilly, Milo and a crow share a picnic in the garden", benny_ch3),
+    ("benny", "cover", 600, 800, "Benny the bunny holding a red apple between an apple tree and a lemon tree", benny_cover),
+    ("benny", "ch1", 800, 600, "Benny plants fruit seeds and a baby lemon tree while Tilly the turtle walks by", benny_ch1),
+    ("benny", "ch2", 800, 600, "Benny hops next to sprouts and strawberry flowers while Milo shares blueberries", benny_ch2),
+    ("benny", "ch3", 800, 600, "Benny, Grandma, Tilly and Milo share a fruit picnic", benny_ch3),
 ]
 
 

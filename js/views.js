@@ -150,11 +150,11 @@
   function buildPages(paragraphs) {
     const pages = [];
     let index = 0;
-    for (const paragraph of paragraphs) {
+    paragraphs.forEach((paragraph, paragraphIndex) => {
       const sentences = [];
       let sentence = [];
       for (const unit of paragraph) {
-        sentence.push({ text: unit.text, start: unit.start, index: index++ });
+        sentence.push({ text: unit.text, start: unit.start, index: index++, paragraph: paragraphIndex });
         if (SENTENCE_END.test(unit.text)) {
           sentences.push(sentence);
           sentence = [];
@@ -178,7 +178,7 @@
         words += w;
       }
       if (page.length) pages.push(page);
-    }
+    });
     return pages;
   }
 
@@ -194,7 +194,11 @@
     const Player = window.Player;
 
     const pages = buildPages(ch.paragraphs);
-    const starts = pages.flat().map((unit) => unit.start);
+    const units = pages.flat();
+    const starts = units.map((unit) => unit.start);
+    // One illustration per paragraph (js/scenes.js); chapters without scenes keep their single image.
+    const scenes = (window.SCENES || {})[`${id}/${number}`] || [];
+    const sceneFor = (paragraph) => scenes[paragraph] || ch.image;
     const pageOf = [];
     pages.forEach((page, n) => page.forEach((unit) => (pageOf[unit.index] = n)));
 
@@ -216,7 +220,10 @@
       <section class="chapter-view theme-${esc(book.theme)}">
         <a class="back-link" href="#/book/${esc(id)}">${icon('arrow-left')}<span lang="en">${esc(book.title)}</span></a>
         <div class="spread">
-          <figure class="illustration"><img src="${esc(ch.image)}" alt="" width="800" height="600"></figure>
+          <figure class="illustration">
+            <img class="scene is-visible" src="${esc(sceneFor(0))}" alt="" width="800" height="600">
+            <img class="scene" alt="" width="800" height="600">
+          </figure>
           <div class="book-page" data-text-size="${esc(settings.textSize)}">
             <header class="chapter-heading">
               <p class="eyebrow" data-i18n="chapterOf" data-i18n-params="${params({ n: number, total })}"></p>
@@ -281,6 +288,8 @@
     const prevPageBtn = $('[data-act="prev-page"]');
     const nextPageBtn = $('[data-act="next-page"]');
     const dots = [...el.querySelectorAll('.page-dot')];
+    const sceneLayers = [...el.querySelectorAll('.scene')];
+    let shownScene = sceneFor(0);
     const endCard = $('.end-card');
     const toast = $('.toast');
     const volume = $('.volume input');
@@ -312,6 +321,21 @@
         }
       }
       return found;
+    }
+
+    // Crossfades to `src` using the hidden layer once it has loaded.
+    function showScene(src) {
+      if (src === shownScene) return;
+      shownScene = src;
+      const [front, back] = sceneLayers[0].classList.contains('is-visible') ? sceneLayers : [sceneLayers[1], sceneLayers[0]];
+      const swap = () => {
+        back.classList.add('is-visible');
+        front.classList.remove('is-visible');
+      };
+      back.onload = null;
+      back.src = src;
+      if (back.complete) swap();
+      else back.onload = swap;
     }
 
     // The book keeps a fixed size: start from the chosen text size and shrink it
@@ -360,6 +384,7 @@
 
     function highlight(index) {
       showPage(pageOf[index]);
+      showScene(sceneFor(units[index].paragraph));
       if (index === current) return;
       pageText.querySelector('.is-current')?.classList.remove('is-current');
       pageText.querySelector(`[data-i="${index}"]`)?.classList.add('is-current');
@@ -534,6 +559,9 @@
       artwork: book.cover,
       onPrev: number > 1 ? () => go(number - 1) : null,
       onNext: isLast ? null : () => go(number + 1),
+    });
+    scenes.forEach((src) => {
+      new Image().src = src;
     });
     setVolumeFill();
     render(startAt);

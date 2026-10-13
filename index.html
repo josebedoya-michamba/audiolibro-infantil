@@ -7,9 +7,9 @@
   <meta name="description" content="Audiolibros infantiles en inglés, capítulo por capítulo.">
   <meta name="theme-color" content="#FFF8F0">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23FFD9CC'/%3E%3Cpath d='M32 14l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z' fill='%23F5C84C' stroke='%23F5C84C' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Hora del Cuento">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -41,6 +41,7 @@
       </svg>
       <span class="brand-name" data-i18n="appName">Hora del Cuento</span>
     </a>
+    <p class="offline-status" role="status" hidden></p>
     <div class="lang-switch" role="group" data-i18n-aria="language">
       <button type="button" data-lang="es" aria-pressed="true">ES</button>
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
@@ -52,6 +53,7 @@
   <audio id="audio" preload="metadata"></audio>
 
   <script src="js/data.js"></script>
+  <script src="js/scenes.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/storage.js"></script>
   <script src="js/player.js"></script>

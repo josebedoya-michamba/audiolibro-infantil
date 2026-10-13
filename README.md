@@ -6,10 +6,12 @@ Audiolibros infantiles (6–9 años) con reproductor por capítulo. HTML, CSS y 
 - Voces neuronales gratuitas generadas con [edge-tts](https://github.com/rany2/edge-tts): un narrador por libro y una voz por personaje.
 - El capítulo se ve como un libro abierto: la ilustración a la izquierda y, a la derecha, el texto de una o dos oraciones a la vez. La página pasa sola mientras avanza el audio.
 - Mientras suena el audio se resalta la frase actual; al tocar una frase, el audio salta a ella.
-- Tamaño de letra ajustable (4 tamaños).
+- Tamaño de letra ajustable (4 tamaños). El libro mantiene siempre el mismo tamaño: si una página tiene más texto, la letra se achica sola.
+- La ilustración cambia en cada párrafo (cada ~8 s), mostrando lo que pasa en el cuento, con transición suave y un movimiento lento de cámara.
 - Velocidad (lento / normal / rápido), volumen, ±10 s y capítulo anterior/siguiente.
 - Guarda el progreso en el navegador: retoma el capítulo y el minuto donde quedó el niño.
 - Interfaz en español o inglés, con selector.
+- Funciona sin internet: la primera vez que alguien entra a la web, la app se guarda completa en su equipo (unos 6–8 MB) y desde ahí abre sin conexión. También se puede instalar como app ("Agregar a pantalla de inicio").
 
 ## Ver la página
 
@@ -43,8 +45,10 @@ El script sintetiza cada frase por separado y concatena los MP3. edge-tts entreg
 2. Cada párrafo es una lista de segmentos:
    - Un texto simple lo lee el narrador.
    - Un objeto de una sola clave, como `{"Pip": "“Hello!”"}`, es un diálogo y lo lee la voz de ese personaje.
-3. Pon las ilustraciones en `images/<id>/cover.svg` (3:4) y `images/<id>/ch1.svg`, `ch2.svg`… (4:3). Las actuales salen de `tools/make_illustrations.py`.
-4. Corre `tools/generate_audio.py`.
+3. Pon las ilustraciones en `images/<id>/cover.svg` (3:4) y `images/<id>/ch1.svg`, `ch2.svg`… (4:3). Opcionalmente, agrega una escena por párrafo en `images/<id>/ch<N>/p01.svg`, `p02.svg`…; un párrafo sin escena reusa la anterior.
+4. Corre `tools/generate_audio.py`, luego `python3 tools/build_scene_index.py` (escribe `js/scenes.js`) y al final `python3 tools/build_offline.py` (escribe `offline-manifest.js`).
+
+Las ilustraciones actuales salen de `tools/make_illustrations.py` (portadas y capítulos) y de `tools/scenes_<id>.py` (escenas por párrafo).
 
 Para ver las voces disponibles: `.venv/bin/edge-tts --list-voices`.
 
@@ -59,8 +63,21 @@ js/player.js          wrapper de <audio> + controles de pantalla de bloqueo
 js/views.js           vistas: biblioteca, libro y capítulo
 js/app.js             router y arranque
 js/data.js            GENERADO: libros, capítulos, frases con tiempos
+js/scenes.js          GENERADO: escena de cada párrafo
 content/stories.json  FUENTE de los cuentos
+sw.js                 service worker: guarda la app para usarla sin internet
+offline-manifest.js   GENERADO: archivos que se guardan y versión
+manifest.webmanifest  datos para instalar la app (nombre, íconos, colores)
+fonts/                fuentes Fredoka y Andika (licencia SIL OFL)
+icons/                íconos de la app
 audio/                GENERADO: MP3 por capítulo
-images/               ilustraciones SVG
+images/               ilustraciones SVG (portadas, capítulos y escenas por párrafo)
 tools/                scripts de generación
 ```
+
+## Modo sin internet
+
+`sw.js` descarga en segundo plano todos los archivos de `offline-manifest.js` la primera vez que alguien abre la web, y desde ahí sirve la app desde el equipo. La versión del manifest es un hash de todos los archivos: **después de cualquier cambio corre `python3 tools/build_offline.py`** antes de subir, así los equipos que ya tenían la app descargan la versión nueva automáticamente (se aplica al cambiar de pantalla).
+
+Solo funciona servida por http(s), por ejemplo GitHub Pages o `tools/serve.py`. Abierta con doble clic (`file://`) la app ya funciona sin internet por sí sola.
+
