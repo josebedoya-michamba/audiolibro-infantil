@@ -488,8 +488,11 @@ main > section { animation: fade-in 0.45s var(--ease-out) both; }
   --story-size: 1.8rem;
   display: flex;
   flex-direction: column;
-  min-height: calc(100cqw * 0.3894); /* height of the 4:3 illustration column */
-  padding: clamp(28px, 3.4vw, 44px) clamp(28px, 4vw, 56px) clamp(20px, 2.4vw, 28px);
+  /* Fixed height = the 4:3 illustration column, so the book never changes size.
+     Long pages shrink their text instead (see fitText in views.js). */
+  height: calc(100cqw * 0.3894);
+  overflow: hidden;
+  padding: clamp(24px, 2.8vw, 34px) clamp(28px, 3.6vw, 44px) clamp(16px, 2vw, 22px);
 }
 .book-page[data-text-size='s'] { --story-size: 1.45rem; }
 .book-page[data-text-size='l'] { --story-size: 2.15rem; }
@@ -497,21 +500,22 @@ main > section { animation: fade-in 0.45s var(--ease-out) both; }
 
 .chapter-heading { display: flex; flex-direction: column; gap: 4px; }
 .chapter-heading .eyebrow { font-size: 0.92rem; }
-.chapter-heading h1 { font-size: clamp(1.35rem, 1.1rem + 0.7vw, 1.7rem); }
+.chapter-heading h1 { font-size: clamp(1.3rem, 1.05rem + 0.6vw, 1.55rem); }
 
-.page-body { flex: 1; display: flex; flex-direction: column; }
+.page-body { flex: 1; min-height: 0; display: flex; flex-direction: column; }
 .page-stage {
   flex: 1;
+  min-height: 0;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  padding-block: clamp(20px, 3vw, 36px);
+  padding-block: 12px;
 }
 .page-text {
   font-family: var(--font-read);
   font-size: var(--story-size);
-  line-height: 1.6;
+  line-height: 1.5;
   text-wrap: pretty;
-  transition: font-size 0.3s var(--ease-out);
 }
 .page-text.turn-next { animation: turn-next 0.45s var(--ease-out) both; }
 .page-text.turn-prev { animation: turn-prev 0.45s var(--ease-out) both; }
@@ -552,22 +556,24 @@ main > section { animation: fade-in 0.45s var(--ease-out) both; }
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 8px;
-  margin-top: 20px;
-  padding: clamp(20px, 3vw, 32px);
+  gap: 6px;
+  min-height: 0;
+  margin-top: 14px;
+  padding: 18px 24px;
   border-radius: var(--radius);
   background: color-mix(in oklab, var(--butter) 75%, var(--paper));
   animation: pop-in 0.5s var(--ease-out) both;
 }
 .end-star .icon {
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   color: var(--butter-deep);
   animation: twinkle 1.6s var(--ease-out) 0.2s both;
 }
-.end-title { font-weight: 600; font-size: 1.6rem; }
+.end-title { font-weight: 600; font-size: 1.45rem; }
 .end-body { font-family: var(--font-read); font-size: 1.15rem; color: var(--ink-soft); }
-.end-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.end-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.end-actions .btn { min-height: 46px; padding: 10px 18px; font-size: 1rem; }
 
 /* Player */
 .player {
@@ -662,7 +668,8 @@ main > section { animation: fade-in 0.45s var(--ease-out) both; }
 .icon-btn:active:not(:disabled) { transform: scale(0.92); }
 .icon-btn:disabled { opacity: 0.3; cursor: default; }
 .page-turn { background: color-mix(in oklab, var(--accent) 45%, var(--paper)); }
-.page-turn .icon { width: 26px; height: 26px; }
+.page-turn { width: 46px; height: 46px; }
+.page-turn .icon { width: 24px; height: 24px; }
 
 .play-btn {
   width: 78px;
@@ -740,7 +747,7 @@ main > section { animation: fade-in 0.45s var(--ease-out) both; }
   .spread { grid-template-columns: 1fr; }
   .spread::after { display: none; }
   .illustration { aspect-ratio: 4 / 3; }
-  .book-page { min-height: 0; }
+  .book-page { height: auto; }
   .controls { grid-template-columns: 1fr; justify-items: center; }
   .controls > .speed,
   .controls-end { justify-self: center; }

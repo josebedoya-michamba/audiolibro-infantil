@@ -5,8 +5,8 @@ window.BOOKS = [
     "title": "Pip and the Fallen Star",
     "theme": "peach",
     "summary": {
-      "es": "Un zorrito encuentra una estrella que se cayó del cielo y promete ayudarla a volver a casa.",
-      "en": "A little fox finds a star that fell from the sky and promises to help her get back home."
+      "es": "Un zorrito y sus amigos animales del bosque ayudan a una estrella caída a volver al cielo.",
+      "en": "A little fox and his animal friends from the forest help a fallen star get back to the sky."
     },
     "cover": "images/pip/cover.svg",
     "chapters": [
@@ -15,7 +15,7 @@ window.BOOKS = [
         "title": "The Star in the Meadow",
         "image": "images/pip/ch1.svg",
         "audio": "audio/pip/ch1.mp3",
-        "duration": 84.576,
+        "duration": 95.352,
         "paragraphs": [
           [
             {
@@ -23,126 +23,154 @@ window.BOOKS = [
               "start": 0.0
             },
             {
-              "text": "Pip had a fluffy orange tail and a nose that loved to sniff out adventures.",
+              "text": "Pip had a fluffy orange tail and lots of animal friends.",
               "start": 7.248
             }
           ],
           [
             {
-              "text": "One night, Pip could not sleep.",
-              "start": 12.672
+              "text": "One night, everyone was asleep.",
+              "start": 11.712
             },
             {
-              "text": "He peeked out of his den and saw something strange.",
-              "start": 15.264
+              "text": "The rabbits were asleep in their burrow.",
+              "start": 14.472
             },
             {
-              "text": "A tiny light was falling from the sky!",
-              "start": 18.768
+              "text": "The mice were asleep under the roots.",
+              "start": 17.232
             },
             {
-              "text": "It tumbled down, down, down, and landed softly in the meadow.",
-              "start": 21.696
+              "text": "Even the birds were asleep in their nests.",
+              "start": 19.992
             }
           ],
           [
             {
-              "text": "Pip tiptoed through the tall grass.",
-              "start": 26.832
+              "text": "But Pip could not sleep.",
+              "start": 23.112
             },
             {
+              "text": "He peeked out of his den and saw a tiny light falling from the sky.",
+              "start": 25.056
+            },
+            {
+              "text": "It landed softly in the meadow, next to the pond.",
+              "start": 29.664
+            }
+          ],
+          [
+            {
+              "text": "Pip tiptoed through the grass.",
+              "start": 33.192
+            },
+            {
+              "text": "A green frog jumped onto a lily pad.",
+              "start": 35.472
+            },
+            {
+              "text": "“Ribbit!",
+              "start": 38.616
+            },
+            {
+              "text": "Did you see that?”",
+              "start": 40.488
+            }
+          ],
+          [
+            {
               "text": "There, between two daisies, was a little star.",
-              "start": 29.376
+              "start": 42.36
             },
             {
               "text": "She was glowing, but only a tiny bit.",
-              "start": 33.216
+              "start": 46.2
             },
             {
               "text": "And she was crying.",
-              "start": 36.624
+              "start": 49.608
             }
           ],
           [
             {
               "text": "“Hello,”",
-              "start": 38.544
+              "start": 51.528
             },
             {
               "text": "whispered Pip.",
-              "start": 40.416
+              "start": 53.4
             },
             {
-              "text": "“Are you okay?”",
-              "start": 42.288
+              "text": "“I'm Pip, the fox.",
+              "start": 55.272
+            },
+            {
+              "text": "Are you okay?”",
+              "start": 57.96
             }
           ],
           [
             {
               "text": "“I fell,”",
-              "start": 44.16
+              "start": 59.832
             },
             {
               "text": "sniffled the star.",
-              "start": 46.032
+              "start": 61.704
             },
             {
               "text": "“My name is Twinkle.",
-              "start": 47.904
+              "start": 63.576
             },
             {
               "text": "I was playing tag with the moon, and I slipped.",
-              "start": 50.208
+              "start": 65.88
             },
             {
               "text": "Now I can't get home.”",
-              "start": 54.048
+              "start": 69.72
             }
           ],
           [
             {
-              "text": "Pip looked up.",
-              "start": 56.472
+              "text": "A sleepy rabbit hopped over.",
+              "start": 72.144
             },
             {
-              "text": "The sky was very, very far away.",
-              "start": 58.344
+              "text": "A little mouse came too.",
+              "start": 74.568
             },
             {
-              "text": "But Pip had a kind heart, and kind hearts always find a way.",
-              "start": 61.344
+              "text": "They all looked up at the sky.",
+              "start": 76.656
+            },
+            {
+              "text": "It was very, very far away.",
+              "start": 78.552
             }
           ],
           [
             {
               "text": "“Don't worry, Twinkle,”",
-              "start": 65.832
+              "start": 81.096
             },
             {
               "text": "said Pip.",
-              "start": 68.496
+              "start": 83.76
             },
             {
-              "text": "“I will help you get home.",
-              "start": 70.368
+              "text": "“My friends and I will help you get home.",
+              "start": 85.632
             },
             {
               "text": "I promise.”",
-              "start": 72.84
+              "start": 89.16
             }
           ],
           [
             {
-              "text": "Twinkle stopped crying.",
-              "start": 74.76
-            },
-            {
-              "text": "Her light grew just a little bit brighter.",
-              "start": 76.848
-            },
-            {
-              "text": "And together, the fox and the star began to make a plan.",
-              "start": 79.944
+              "text": "Twinkle smiled, and her light grew a little bit brighter.",
+              "start": 91.08
             }
           ]
         ]
@@ -152,7 +180,7 @@ window.BOOKS = [
         "title": "The Tallest Hill",
         "image": "images/pip/ch2.svg",
         "audio": "audio/pip/ch2.mp3",
-        "duration": 87.864,
+        "duration": 87.624,
         "paragraphs": [
           [
             {
@@ -170,130 +198,130 @@ window.BOOKS = [
               "start": 5.136
             },
             {
-              "text": "Then his ears popped up.",
+              "text": "“Grandpa Owl will know!",
               "start": 7.032
             },
             {
-              "text": "“Grandpa Owl will know!",
-              "start": 9.072
-            },
-            {
-              "text": "He knows everything.”",
-              "start": 11.616
+              "text": "Owls are very wise.”",
+              "start": 9.576
             }
           ],
           [
             {
-              "text": "So Pip carried Twinkle carefully in his paws, and they walked to the oldest tree in the forest.",
-              "start": 13.968
+              "text": "So Pip carried Twinkle to the oldest tree in the forest.",
+              "start": 12.192
             },
             {
-              "text": "Grandpa Owl was sitting on a branch, blinking his big yellow eyes.",
-              "start": 20.52
+              "text": "A squirrel ran down the trunk to say hello.",
+              "start": 16.2
+            },
+            {
+              "text": "High on a branch sat Grandpa Owl, blinking his big yellow eyes.",
+              "start": 19.464
             }
           ],
           [
             {
               "text": "“Hoo, hoo.",
-              "start": 25.056
+              "start": 24.216
             },
             {
-              "text": "What do we have here?”",
-              "start": 27.48
+              "text": "Climb the Tallest Hill, little fox.",
+              "start": 26.64
             },
             {
-              "text": "said Grandpa Owl.",
-              "start": 29.712
+              "text": "At the top, the sky is close enough to touch.",
+              "start": 30.312
+            },
+            {
+              "text": "But first, you must cross the river.”",
+              "start": 34.728
             }
           ],
           [
             {
-              "text": "“This is Twinkle,”",
-              "start": 31.584
+              "text": "At the river, a family of ducks was swimming.",
+              "start": 38.4
+            },
+            {
+              "text": "Quack, quack!",
+              "start": 41.784
+            },
+            {
+              "text": "Silver fish jumped out of the water.",
+              "start": 43.656
+            },
+            {
+              "text": "Splash!",
+              "start": 46.488
+            }
+          ],
+          [
+            {
+              "text": "“How can we cross?”",
+              "start": 48.36
+            },
+            {
+              "text": "asked Pip.",
+              "start": 50.544
+            }
+          ],
+          [
+            {
+              "text": "A busy beaver pushed a big log across the water.",
+              "start": 52.416
+            },
+            {
+              "text": "Now there was a bridge!",
+              "start": 55.872
+            }
+          ],
+          [
+            {
+              "text": "On the other side, they met a big brown bear eating berries.",
+              "start": 57.744
+            }
+          ],
+          [
+            {
+              "text": "“The Tallest Hill is that way,”",
+              "start": 62.304
+            },
+            {
+              "text": "said the bear, pointing with his paw.",
+              "start": 65.28
+            },
+            {
+              "text": "“Be brave, little fox.”",
+              "start": 68.184
+            }
+          ],
+          [
+            {
+              "text": "Pip's legs were tired, but he did not stop.",
+              "start": 71.208
+            },
+            {
+              "text": "“You are very brave, Pip,”",
+              "start": 74.736
+            },
+            {
+              "text": "said Twinkle.",
+              "start": 77.616
+            }
+          ],
+          [
+            {
+              "text": "“Friends help friends,”",
+              "start": 79.488
             },
             {
               "text": "said Pip.",
-              "start": 33.768
-            },
-            {
-              "text": "“She fell from the sky.",
-              "start": 35.64
-            },
-            {
-              "text": "We need to find the closest place to the stars.”",
-              "start": 38.16
-            }
-          ],
-          [
-            {
-              "text": "Grandpa Owl smiled.",
-              "start": 42.216
-            },
-            {
-              "text": "“Climb the Tallest Hill, beyond the river.",
-              "start": 44.112
-            },
-            {
-              "text": "At the very top, the sky is close enough to touch.",
-              "start": 47.952
-            },
-            {
-              "text": "But hurry!",
-              "start": 52.752
-            },
-            {
-              "text": "Twinkle must be home before the sun wakes up.”",
-              "start": 54.672
-            }
-          ],
-          [
-            {
-              "text": "Pip and Twinkle set off.",
-              "start": 58.56
-            },
-            {
-              "text": "They crossed the river by hopping on stones.",
-              "start": 60.864
-            },
-            {
-              "text": "One, two, three!",
-              "start": 64.032
-            },
-            {
-              "text": "They climbed over rocks and through prickly bushes.",
-              "start": 65.904
-            },
-            {
-              "text": "Pip's legs grew tired, but he did not stop.",
-              "start": 69.384
-            }
-          ],
-          [
-            {
-              "text": "“You are very brave, Pip,”",
-              "start": 72.984
-            },
-            {
-              "text": "said Twinkle softly.",
-              "start": 75.864
-            }
-          ],
-          [
-            {
-              "text": "Pip smiled.",
-              "start": 77.856
-            },
-            {
-              "text": "“Friends help friends,”",
-              "start": 79.728
-            },
-            {
-              "text": "he said.",
-              "start": 82.272
+              "start": 82.032
             },
             {
               "text": "And step by step, they climbed higher and higher.",
-              "start": 84.144
+              "start": 83.904
             }
           ]
         ]
@@ -303,7 +331,7 @@ window.BOOKS = [
         "title": "Home in the Sky",
         "image": "images/pip/ch3.svg",
         "audio": "audio/pip/ch3.mp3",
-        "duration": 86.736,
+        "duration": 79.848,
         "paragraphs": [
           [
             {
@@ -311,140 +339,136 @@ window.BOOKS = [
               "start": 0.0
             },
             {
-              "text": "The wind was cool, and the stars looked so close that Pip could almost count their sparkles.",
+              "text": "The stars looked so close!",
               "start": 3.912
             }
           ],
           [
             {
-              "text": "“We made it!”",
-              "start": 10.08
-            },
-            {
-              "text": "cheered Pip.",
-              "start": 11.952
-            }
-          ],
-          [
-            {
               "text": "But Twinkle was worried.",
-              "start": 13.824
+              "start": 6.24
             },
             {
-              "text": "“I'm still too small and too dim to fly,”",
-              "start": 15.84
+              "text": "“I'm too dim to fly.",
+              "start": 8.256
             },
             {
-              "text": "she said.",
-              "start": 19.224
-            },
-            {
-              "text": "“How will I get back up there?”",
-              "start": 21.096
+              "text": "How will I get back up there?”",
+              "start": 10.608
             }
           ],
           [
             {
               "text": "Pip had an idea.",
-              "start": 23.592
+              "start": 13.104
             },
             {
-              "text": "“Maybe you need to feel happy to shine bright.",
-              "start": 25.464
-            },
-            {
-              "text": "Let's think of happy things!”",
-              "start": 29.184
+              "text": "“Maybe you need to feel happy to shine bright!”",
+              "start": 14.976
             }
           ],
           [
             {
-              "text": "So they did.",
-              "start": 32.016
+              "text": "Just then, all of Pip's friends arrived.",
+              "start": 18.72
             },
             {
-              "text": "They thought about warm sunshine, and lazy rivers, and the funny way Grandpa Owl said hoo.",
-              "start": 33.888
+              "text": "The rabbit, the mouse, and the frog.",
+              "start": 22.08
             },
             {
-              "text": "They laughed and laughed.",
-              "start": 40.08
+              "text": "The squirrel, the ducks, and the big brown bear.",
+              "start": 25.32
+            },
+            {
+              "text": "Even a gentle deer and Grandpa Owl came to help.",
+              "start": 29.136
             }
           ],
           [
+            {
+              "text": "The frog did a funny dance.",
+              "start": 32.688
+            },
+            {
+              "text": "Ribbit, ribbit!",
+              "start": 34.944
+            },
+            {
+              "text": "The ducks sang a silly song.",
+              "start": 36.816
+            },
+            {
+              "text": "Quack, quack!",
+              "start": 39.36
+            },
+            {
+              "text": "The bear told a joke about honey.",
+              "start": 41.232
+            }
+          ],
+          [
+            {
+              "text": "Everyone laughed and laughed.",
+              "start": 43.704
+            },
             {
               "text": "And with every laugh, Twinkle glowed brighter.",
-              "start": 42.024
+              "start": 46.008
             },
             {
               "text": "And brighter.",
-              "start": 45.432
+              "start": 49.416
             },
             {
               "text": "And brighter!",
-              "start": 47.304
-            },
-            {
-              "text": "Until she was shining like a tiny moon.",
-              "start": 49.176
+              "start": 51.288
             }
           ],
           [
             {
               "text": "Slowly, Twinkle began to float.",
-              "start": 52.08
+              "start": 53.16
             },
             {
-              "text": "“Thank you, Pip,”",
-              "start": 54.936
+              "text": "“Thank you, Pip.",
+              "start": 56.016
             },
             {
-              "text": "she said.",
-              "start": 57.192
-            },
-            {
-              "text": "“I will never forget you.”",
-              "start": 59.064
+              "text": "Thank you, everyone!”",
+              "start": 58.272
             }
           ],
           [
             {
               "text": "Up, up, up she flew, until she found her place in the sky.",
-              "start": 61.536
+              "start": 60.72
             }
           ],
           [
             {
-              "text": "Pip waved and waved.",
-              "start": 66.336
+              "text": "The animals cheered.",
+              "start": 65.52
             },
             {
-              "text": "Then something wonderful happened.",
-              "start": 68.448
-            },
-            {
-              "text": "Right above him, one little star winked.",
-              "start": 70.8
+              "text": "Then one little star winked at them.",
+              "start": 67.392
             },
             {
               "text": "Twice.",
-              "start": 74.424
+              "start": 69.936
             }
           ],
           [
             {
-              "text": "Pip smiled all the way home.",
-              "start": 76.296
-            },
-            {
               "text": "And every night after that, before he went to sleep, Pip looked up and winked back.",
-              "start": 78.696
+              "start": 71.808
             }
           ],
           [
             {
               "text": "The End.",
-              "start": 84.864
+              "start": 77.976
             }
           ]
         ]
@@ -456,8 +480,8 @@ window.BOOKS = [
     "title": "Nimbus, the Little Cloud",
     "theme": "sky",
     "summary": {
-      "es": "Una nube pequeñita que no sabe llover descubre su propia manera de ayudar.",
-      "en": "A tiny cloud who can't make rain discovers his very own way to help."
+      "es": "Una nube pequeñita viaja sobre montañas, ríos y lagos, y descubre su propia manera de ayudar.",
+      "en": "A tiny cloud travels over mountains, rivers and lakes, and discovers his very own way to help."
     },
     "cover": "images/nimbus/cover.svg",
     "chapters": [
@@ -466,128 +490,134 @@ window.BOOKS = [
         "title": "Too Small to Rain",
         "image": "images/nimbus/ch1.svg",
         "audio": "audio/nimbus/ch1.mp3",
-        "duration": 84.768,
+        "duration": 84.48,
         "paragraphs": [
           [
             {
-              "text": "High above the hills, where the birds fly and the wind sings, lived a little cloud named Nimbus.",
+              "text": "High in the blue sky, above the mountains and the forest, lived a little cloud named Nimbus.",
               "start": 0.0
             }
           ],
           [
             {
-              "text": "Nimbus was soft and round, like a puff of cotton candy.",
-              "start": 6.624
+              "text": "Below him, Nimbus could see everything.",
+              "start": 6.432
             },
             {
-              "text": "But Nimbus had a problem.",
-              "start": 10.944
+              "text": "Tall green trees.",
+              "start": 9.648
             },
             {
-              "text": "All the big clouds could make rain.",
-              "start": 13.104
+              "text": "A long, shiny river.",
+              "start": 11.52
             },
             {
-              "text": "Nimbus could not make even one drop.",
-              "start": 15.744
+              "text": "Fields of grass and flowers.",
+              "start": 13.896
+            },
+            {
+              "text": "And the warm, yellow sun smiling over it all.",
+              "start": 16.44
             }
           ],
           [
             {
-              "text": "Every morning, the big clouds gathered together.",
-              "start": 18.744
+              "text": "Every morning, the big clouds gathered over the mountains.",
+              "start": 20.208
             },
             {
-              "text": "They grew dark and heavy, and then, splish, splash, they watered the fields below.",
-              "start": 22.32
+              "text": "They grew dark and heavy, and then, splish, splash, they made rain for the forest and the fields.",
+              "start": 24.36
             }
           ],
           [
             {
-              "text": "“Can I try?”",
-              "start": 28.92
+              "text": "“Can I make rain too?”",
+              "start": 31.728
             },
             {
               "text": "asked Nimbus.",
-              "start": 30.792
+              "start": 34.08
             }
           ],
           [
             {
               "text": "Mama Cumulus, the biggest cloud of all, smiled kindly.",
-              "start": 32.664
+              "start": 35.952
             },
             {
-              "text": "“Of course you can, little one.”",
-              "start": 37.488
+              "text": "“Of course you can, little one.",
+              "start": 40.776
+            },
+            {
+              "text": "Try!”",
+              "start": 44.04
             }
           ],
           [
             {
               "text": "Nimbus squeezed and squeezed.",
-              "start": 40.752
+              "start": 45.912
             },
             {
               "text": "He puffed up his cheeks.",
-              "start": 43.248
-            },
-            {
-              "text": "He held his breath.",
-              "start": 45.312
+              "start": 48.408
             },
             {
               "text": "But nothing happened.",
-              "start": 47.184
+              "start": 50.472
             },
             {
-              "text": "Not a single drop.",
-              "start": 49.152
+              "text": "Not a single raindrop.",
+              "start": 52.44
             }
           ],
           [
             {
-              "text": "The other clouds giggled, and Nimbus felt his edges go wobbly.",
-              "start": 51.072
-            },
-            {
               "text": "“I'm too small,”",
-              "start": 55.584
+              "start": 54.6
             },
             {
               "text": "he said sadly.",
-              "start": 57.552
+              "start": 56.568
             },
             {
               "text": "“I'm no good at anything.”",
-              "start": 59.424
+              "start": 58.44
             }
           ],
           [
             {
               "text": "“Being small is not the same as being no good,”",
-              "start": 61.872
+              "start": 60.888
             },
             {
               "text": "said Mama Cumulus.",
-              "start": 66.0
+              "start": 65.016
             },
             {
-              "text": "“Everyone has their own way to help.",
-              "start": 68.304
-            },
-            {
-              "text": "You just haven't found yours yet.”",
-              "start": 71.712
+              "text": "“Everyone has their own way to help.”",
+              "start": 67.32
             }
           ],
           [
             {
-              "text": "Nimbus wasn't so sure.",
-              "start": 75.048
+              "text": "Just then, the wind blew softly.",
+              "start": 70.728
             },
             {
-              "text": "That afternoon, he floated away from the others, all by himself, wondering what a little cloud could ever do.",
-              "start": 77.256
+              "text": "“Come with me, little cloud.",
+              "start": 73.656
+            },
+            {
+              "text": "I will show you the world.”",
+              "start": 76.632
+            }
+          ],
+          [
+            {
+              "text": "So Nimbus floated away on the wind, wondering what a little cloud could do.",
+              "start": 79.176
             }
           ]
         ]
@@ -597,158 +627,138 @@ window.BOOKS = [
         "title": "The Thirsty Garden",
         "image": "images/nimbus/ch2.svg",
         "audio": "audio/nimbus/ch2.mp3",
-        "duration": 89.808,
+        "duration": 80.976,
         "paragraphs": [
           [
             {
-              "text": "Nimbus drifted over hills and valleys until he saw a tiny garden next to a little yellow house.",
+              "text": "The wind carried Nimbus over a tall mountain with snow on top.",
               "start": 0.0
+            },
+            {
+              "text": "They passed a deep blue lake and a quiet valley full of rocks.",
+              "start": 4.488
+            }
+          ],
+          [
+            {
+              "text": "At last, Nimbus saw a tiny garden next to a little yellow house.",
+              "start": 8.832
             }
           ],
           [
             {
               "text": "The garden looked very sad.",
-              "start": 6.624
+              "start": 13.992
             },
             {
-              "text": "The flowers were droopy.",
-              "start": 9.0
+              "text": "The soil was dry and cracked.",
+              "start": 16.368
             },
             {
-              "text": "The leaves were dry and crunchy.",
-              "start": 11.064
+              "text": "The grass was brown.",
+              "start": 18.96
+            },
+            {
+              "text": "The leaves on the little tree were crunchy.",
+              "start": 20.904
             },
             {
               "text": "And in the middle stood one small daisy, bending her head toward the ground.",
-              "start": 13.608
+              "start": 24.0
             }
           ],
           [
             {
               "text": "“Excuse me,”",
-              "start": 18.816
+              "start": 29.208
             },
             {
               "text": "called Nimbus.",
-              "start": 20.688
+              "start": 31.08
             },
             {
               "text": "“Are you all right?”",
-              "start": 22.56
+              "start": 32.952
             }
           ],
           [
             {
-              "text": "The daisy looked up.",
-              "start": 24.48
+              "text": "“The sun is so hot,”",
+              "start": 34.872
             },
             {
-              "text": "“It's so hot,”",
-              "start": 26.424
+              "text": "sighed the daisy.",
+              "start": 37.392
             },
             {
-              "text": "she sighed.",
-              "start": 28.464
-            },
-            {
-              "text": "“The big clouds never come this way.",
-              "start": 30.336
+              "text": "“The big clouds never come here.",
+              "start": 39.264
             },
             {
               "text": "Our garden is too small for them to notice.”",
-              "start": 33.744
+              "start": 42.48
             }
           ],
           [
-            {
-              "text": "Nimbus looked at the daisy.",
-              "start": 37.8
-            },
-            {
-              "text": "Then he looked at himself.",
-              "start": 40.008
-            },
             {
               "text": "Too small to notice.",
-              "start": 42.168
+              "start": 46.536
             },
             {
-              "text": "He knew exactly how that felt.",
-              "start": 44.328
+              "text": "Nimbus knew exactly how that felt.",
+              "start": 48.696
             }
           ],
           [
             {
-              "text": "“I wish I could help you,”",
-              "start": 46.968
+              "text": "“I can't make rain,”",
+              "start": 51.624
             },
             {
-              "text": "said Nimbus.",
-              "start": 49.272
+              "text": "he said.",
+              "start": 53.904
             },
             {
-              "text": "“But I can't make rain.”",
-              "start": 51.144
+              "text": "“But I can stay with you.”",
+              "start": 55.776
             }
           ],
           [
             {
-              "text": "“Could you just stay for a while?”",
-              "start": 53.592
-            },
-            {
-              "text": "asked the daisy.",
-              "start": 56.352
-            },
-            {
-              "text": "“It's nice to have a friend.”",
-              "start": 58.224
-            }
-          ],
-          [
-            {
-              "text": "So Nimbus stayed.",
-              "start": 60.888
-            },
-            {
-              "text": "He floated right over the garden, and something surprising happened.",
-              "start": 62.76
+              "text": "So Nimbus floated right over the garden.",
+              "start": 58.128
             },
             {
               "text": "His soft, round body made a cool, gentle shadow.",
-              "start": 67.536
+              "start": 61.272
             },
             {
               "text": "The flowers stopped wilting.",
-              "start": 72.024
+              "start": 65.76
             },
             {
               "text": "The daisy lifted her head.",
-              "start": 74.376
+              "start": 68.112
             }
           ],
           [
             {
-              "text": "“Oh!”",
-              "start": 76.68
+              "text": "“Oh, thank you!”",
+              "start": 70.416
             },
             {
               "text": "she said.",
-              "start": 78.552
+              "start": 72.6
             },
             {
               "text": "“That feels so much better!”",
-              "start": 80.424
+              "start": 74.472
             }
           ],
           [
             {
-              "text": "Nimbus felt a warm, fizzy feeling inside.",
-              "start": 83.28
-            },
-            {
-              "text": "It was the happiest he had ever felt.",
-              "start": 86.976
+              "text": "Nimbus felt a warm, happy feeling inside.",
+              "start": 77.328
             }
           ]
         ]
@@ -758,7 +768,7 @@ window.BOOKS = [
         "title": "Nimbus Shines",
         "image": "images/nimbus/ch3.svg",
         "audio": "audio/nimbus/ch3.mp3",
-        "duration": 94.464,
+        "duration": 91.632,
         "paragraphs": [
           [
             {
@@ -766,128 +776,128 @@ window.BOOKS = [
               "start": 0.0
             },
             {
-              "text": "He told the daisy stories about the sky, and the daisy told him about bees and butterflies.",
+              "text": "He told the daisy about mountains, lakes, and rivers.",
               "start": 3.288
+            },
+            {
+              "text": "The daisy told him about seeds, roots, and bees.",
+              "start": 7.824
             }
           ],
           [
             {
-              "text": "Nimbus was so happy that he started to feel full.",
-              "start": 9.672
+              "text": "Nimbus was so happy that he felt full.",
+              "start": 12.072
             },
             {
               "text": "Full of joy, full of friendship, full of something tingly.",
-              "start": 13.416
+              "start": 15.24
             }
           ],
           [
             {
               "text": "Then, plip!",
-              "start": 17.976
+              "start": 19.8
             },
             {
-              "text": "A single raindrop fell from Nimbus and landed right on the daisy's petal.",
-              "start": 19.848
+              "text": "A single raindrop fell from Nimbus and landed on the daisy's petal.",
+              "start": 21.672
             }
           ],
           [
             {
               "text": "“Was that me?”",
-              "start": 25.056
+              "start": 26.616
             },
             {
               "text": "gasped Nimbus.",
-              "start": 26.928
+              "start": 28.488
             }
           ],
           [
             {
               "text": "Plip, plop, plip!",
-              "start": 28.8
+              "start": 30.36
             },
             {
-              "text": "More drops fell, soft and gentle, just the right size for a small garden.",
-              "start": 31.392
+              "text": "Gentle rain began to fall.",
+              "start": 32.952
             },
             {
-              "text": "The flowers drank and drank.",
-              "start": 36.96
+              "text": "The dry soil drank and drank.",
+              "start": 35.376
             },
             {
-              "text": "The leaves turned green again.",
-              "start": 39.456
+              "text": "The brown grass turned green.",
+              "start": 38.04
+            },
+            {
+              "text": "New leaves grew on the little tree.",
+              "start": 40.44
             }
           ],
           [
             {
               "text": "“You did it, Nimbus!”",
-              "start": 41.856
+              "start": 43.272
             },
             {
               "text": "cheered the daisy.",
-              "start": 44.616
+              "start": 46.032
             },
             {
               "text": "“You made rain!”",
-              "start": 46.488
+              "start": 47.904
             }
           ],
           [
             {
-              "text": "When the rain stopped, the sun peeked out from behind Nimbus.",
-              "start": 48.504
+              "text": "When the rain stopped, the sun peeked out.",
+              "start": 49.92
             },
             {
-              "text": "Its light shone through the last tiny drops, and a rainbow appeared over the garden.",
-              "start": 53.112
+              "text": "Its light shone through the last raindrops, and a beautiful rainbow appeared over the garden.",
+              "start": 53.376
             },
             {
-              "text": "It was a small rainbow, but it was the most beautiful one Nimbus had ever seen.",
-              "start": 58.752
+              "text": "Red, orange, yellow, green, blue, and purple!",
+              "start": 59.352
             }
           ],
           [
             {
-              "text": "That evening, Nimbus floated home to Mama Cumulus.",
-              "start": 64.2
+              "text": "That evening, the wind carried Nimbus home over the mountains.",
+              "start": 64.392
             },
             {
-              "text": "“I found my way to help,”",
-              "start": 68.568
+              "text": "“Mama, I found my way to help!",
+              "start": 68.928
             },
             {
-              "text": "he said proudly.",
-              "start": 71.112
-            },
-            {
-              "text": "“Small clouds can make small rain for small gardens.”",
-              "start": 72.984
+              "text": "Small clouds can make small rain for small gardens.”",
+              "start": 72.24
             }
           ],
           [
             {
-              "text": "Mama Cumulus wrapped him in a big, fluffy hug.",
-              "start": 77.448
+              "text": "Mama Cumulus gave him a big, fluffy hug.",
+              "start": 76.704
             },
             {
-              "text": "“I always knew you would,”",
-              "start": 81.48
-            },
-            {
-              "text": "she said.",
-              "start": 84.144
+              "text": "“I always knew you would.”",
+              "start": 80.496
             }
           ],
           [
             {
               "text": "And from that day on, whenever a little garden felt thirsty, Nimbus was always the first to come.",
-              "start": 86.016
+              "start": 83.184
             }
           ],
           [
             {
               "text": "The End.",
-              "start": 92.592
+              "start": 89.76
             }
           ]
         ]
@@ -896,11 +906,11 @@ window.BOOKS = [
   },
   {
     "id": "benny",
-    "title": "Benny's Big Garden",
+    "title": "Benny's Fruit Garden",
     "theme": "mint",
     "summary": {
-      "es": "Un conejito quiere el jardín más grande del valle y aprende que lo bueno toma tiempo y es mejor compartido.",
-      "en": "A bunny wants the biggest garden in the valley and learns that good things take time and are better shared."
+      "es": "Un conejito siembra un jardín de frutas y aprende que lo bueno toma tiempo y es mejor compartido.",
+      "en": "A bunny plants a fruit garden and learns that good things take time and are better shared."
     },
     "cover": "images/benny/cover.svg",
     "chapters": [
@@ -909,7 +919,7 @@ window.BOOKS = [
         "title": "The Tiny Seeds",
         "image": "images/benny/ch1.svg",
         "audio": "audio/benny/ch1.mp3",
-        "duration": 81.552,
+        "duration": 86.136,
         "paragraphs": [
           [
             {
@@ -917,124 +927,142 @@ window.BOOKS = [
               "start": 0.0
             },
             {
-              "text": "He wanted to grow the biggest, most wonderful garden in the whole valley.",
+              "text": "He wanted to grow a garden full of fruit.",
               "start": 4.68
             }
           ],
           [
             {
               "text": "One sunny morning, Grandma Bunny gave him a little paper bag.",
-              "start": 9.264
+              "start": 7.272
             },
             {
-              "text": "Inside were seeds of every shape.",
-              "start": 13.272
+              "text": "“These are fruit seeds, Benny.",
+              "start": 11.28
             },
             {
-              "text": "Round seeds, flat seeds, stripy seeds, and seeds as small as freckles.",
-              "start": 15.84
+              "text": "Take good care of them.”",
+              "start": 14.544
+            }
+          ],
+          [
+            {
+              "text": "Benny looked inside.",
+              "start": 16.992
+            },
+            {
+              "text": "There were tiny apple seeds and round cherry pits.",
+              "start": 18.864
+            },
+            {
+              "text": "There were flat watermelon seeds and little strawberry plants.",
+              "start": 22.512
+            },
+            {
+              "text": "There was even a baby lemon tree!",
+              "start": 26.616
             }
           ],
           [
             {
               "text": "“Hooray!”",
-              "start": 21.912
+              "start": 28.8
             },
             {
               "text": "shouted Benny.",
-              "start": 23.784
+              "start": 30.672
             },
             {
-              "text": "“Today I will plant my garden!”",
-              "start": 25.656
+              "text": "“Today I will plant my fruit garden!”",
+              "start": 32.544
             }
           ],
           [
             {
               "text": "He dug little holes with his paws.",
-              "start": 28.656
+              "start": 35.904
             },
             {
-              "text": "He dropped in the seeds, one by one.",
-              "start": 31.056
+              "text": "He planted the seeds one by one.",
+              "start": 38.304
             },
             {
-              "text": "He covered them with soft, dark soil, and he watered them with his tiny blue watering can.",
-              "start": 33.792
+              "text": "He watered them with his tiny blue watering can.",
+              "start": 40.632
             }
           ],
           [
             {
               "text": "Then Benny sat down and waited.",
-              "start": 40.32
+              "start": 44.136
             },
             {
               "text": "And waited.",
-              "start": 42.408
+              "start": 46.224
             },
             {
               "text": "And waited.",
-              "start": 44.28
+              "start": 48.096
             }
           ],
           [
             {
               "text": "His friend Tilly the turtle came walking by, very slowly.",
-              "start": 46.152
+              "start": 49.968
             },
             {
               "text": "“What are you doing, Benny?”",
-              "start": 50.328
+              "start": 54.144
             }
           ],
           [
             {
-              "text": "“I'm waiting for my garden to grow,”",
-              "start": 53.472
+              "text": "“I'm waiting for my apples and strawberries,”",
+              "start": 57.288
             },
             {
               "text": "said Benny.",
-              "start": 56.568
+              "start": 61.008
             },
             {
-              "text": "“It should be ready any minute now.”",
-              "start": 58.44
+              "text": "“They should be ready any minute now.”",
+              "start": 62.88
             }
           ],
           [
             {
               "text": "Tilly smiled a slow, wise smile.",
-              "start": 61.368
+              "start": 65.856
             },
             {
-              "text": "“Gardens don't grow in minutes, Benny.",
-              "start": 64.176
+              "text": "“Fruit doesn't grow in minutes, Benny.",
+              "start": 68.664
             },
             {
-              "text": "They grow in days and weeks.",
-              "start": 68.04
+              "text": "It grows in weeks and months.",
+              "start": 72.552
             },
             {
               "text": "Good things take time.”",
-              "start": 71.232
+              "start": 75.816
             }
           ],
           [
             {
               "text": "Benny's ears drooped.",
-              "start": 74.064
-            },
-            {
-              "text": "Days?",
-              "start": 75.936
+              "start": 78.648
             },
             {
               "text": "Weeks?",
-              "start": 77.808
+              "start": 80.52
+            },
+            {
+              "text": "Months?",
+              "start": 82.392
             },
             {
               "text": "That sounded like forever.",
-              "start": 79.68
+              "start": 84.264
             }
           ]
         ]
@@ -1044,7 +1072,7 @@ window.BOOKS = [
         "title": "Waiting Is Hard",
         "image": "images/benny/ch2.svg",
         "audio": "audio/benny/ch2.mp3",
-        "duration": 84.552,
+        "duration": 75.504,
         "paragraphs": [
           [
             {
@@ -1052,299 +1080,275 @@ window.BOOKS = [
               "start": 0.0
             },
             {
-              "text": "Nothing.",
+              "text": "No apples.",
               "start": 2.712
             },
             {
-              "text": "Just brown dirt.",
+              "text": "No strawberries.",
               "start": 4.584
-            }
-          ],
-          [
+            },
             {
-              "text": "The morning after that, he ran outside again.",
+              "text": "Just brown dirt.",
               "start": 6.456
-            },
-            {
-              "text": "Still nothing.",
-              "start": 9.384
-            }
-          ],
-          [
-            {
-              "text": "“Maybe the seeds are sleeping,”",
-              "start": 11.256
-            },
-            {
-              "text": "said Benny.",
-              "start": 14.064
-            },
-            {
-              "text": "So he sang them a wake-up song.",
-              "start": 15.936
-            },
-            {
-              "text": "“Grow, little seeds!",
-              "start": 18.0
-            },
-            {
-              "text": "Grow, grow, grow!”",
-              "start": 20.568
             }
           ],
           [
             {
               "text": "Milo the mouse peeked out from under a leaf.",
-              "start": 23.376
+              "start": 8.328
             },
             {
-              "text": "“Benny, what's all that noise?”",
-              "start": 26.28
+              "text": "He was eating a handful of blueberries.",
+              "start": 11.232
+            },
+            {
+              "text": "“Benny, why do you look so grumpy?”",
+              "start": 13.848
             }
           ],
           [
             {
-              "text": "“My seeds won't grow,”",
-              "start": 28.92
+              "text": "“My fruit won't grow,”",
+              "start": 16.728
             },
             {
               "text": "said Benny.",
-              "start": 31.392
+              "start": 19.128
             },
             {
-              "text": "“I want my garden now!”",
-              "start": 33.264
+              "text": "“I want a big red apple now!”",
+              "start": 21.0
             }
           ],
           [
             {
-              "text": "Milo thought for a moment.",
-              "start": 35.736
+              "text": "“Here, have a blueberry,”",
+              "start": 23.976
+            },
+            {
+              "text": "said Milo.",
+              "start": 26.184
             },
             {
               "text": "“When I'm waiting for something, I keep busy.",
-              "start": 37.608
+              "start": 28.056
             },
             {
               "text": "Why don't you take care of your garden while it grows?”",
-              "start": 40.92
+              "start": 31.368
             }
           ],
           [
             {
               "text": "So Benny tried.",
-              "start": 44.448
+              "start": 34.896
             },
             {
-              "text": "Every day, he gave the soil a drink of water.",
-              "start": 46.32
+              "text": "Every day, he watered the soil.",
+              "start": 36.768
             },
             {
               "text": "He pulled out the weeds.",
-              "start": 49.608
+              "start": 39.264
             },
             {
               "text": "He shooed away the hungry crows.",
-              "start": 51.48
+              "start": 41.136
             },
             {
               "text": "And while he worked, he forgot to be grumpy.",
-              "start": 53.856
+              "start": 43.512
             }
           ],
           [
             {
-              "text": "Then, one morning, Benny saw something tiny and green poking out of the ground.",
-              "start": 56.88
+              "text": "One morning, Benny saw tiny green sprouts.",
+              "start": 46.536
             },
             {
-              "text": "Then another.",
-              "start": 62.424
+              "text": "Then he saw little white flowers on the strawberry plants.",
+              "start": 49.848
             },
             {
-              "text": "And another!",
-              "start": 64.296
+              "text": "Then a tiny green bump appeared on the lemon tree!",
+              "start": 53.424
             }
           ],
           [
             {
-              "text": "“Sprouts!”",
-              "start": 66.168
+              "text": "“Is that a lemon?”",
+              "start": 56.856
             },
             {
-              "text": "shouted Benny, hopping in circles.",
-              "start": 68.04
+              "text": "asked Benny, hopping in circles.",
+              "start": 58.848
             },
             {
-              "text": "“My garden is growing!”",
-              "start": 70.8
+              "text": "“My fruit garden is growing!”",
+              "start": 61.392
             }
           ],
           [
             {
               "text": "Tilly the turtle nodded.",
-              "start": 73.32
+              "start": 64.272
             },
             {
               "text": "“You see?",
-              "start": 75.192
+              "start": 66.144
             },
             {
               "text": "Waiting is hard.",
-              "start": 77.184
+              "start": 68.136
             },
             {
               "text": "But when your paws are busy, it gets a little easier.”",
-              "start": 79.68
+              "start": 70.632
             }
           ]
         ]
       },
       {
         "number": 3,
-        "title": "A Garden for Everyone",
+        "title": "A Fruit Picnic",
         "image": "images/benny/ch3.svg",
         "audio": "audio/benny/ch3.mp3",
-        "duration": 86.232,
+        "duration": 88.968,
         "paragraphs": [
           [
             {
-              "text": "Weeks went by, and Benny's garden grew and grew.",
+              "text": "Months went by, and Benny's garden grew and grew.",
               "start": 0.0
             },
             {
-              "text": "There were tall sunflowers, plump red tomatoes, crunchy carrots, and strawberries as sweet as candy.",
-              "start": 3.528
-            }
-          ],
-          [
+              "text": "There were sweet red strawberries and shiny red cherries.",
+              "start": 3.576
+            },
             {
-              "text": "It was the biggest, most wonderful garden in the whole valley.",
-              "start": 10.8
+              "text": "There were crunchy green apples and juicy pears.",
+              "start": 7.464
+            },
+            {
+              "text": "A big striped watermelon sat in the sun, and the lemon tree was full of yellow lemons.",
+              "start": 10.992
             }
           ],
           [
             {
               "text": "Benny was so proud.",
-              "start": 14.856
+              "start": 17.52
             },
             {
-              "text": "But when he looked at all that food, he had a funny feeling.",
-              "start": 16.728
+              "text": "But when he looked at all that fruit, he had a funny feeling.",
+              "start": 19.392
             },
             {
-              "text": "“This is too much for just one bunny,”",
-              "start": 20.52
+              "text": "“This is too much fruit for just one bunny,”",
+              "start": 23.04
             },
             {
               "text": "he said.",
-              "start": 23.784
+              "start": 26.712
             }
           ],
           [
             {
               "text": "Then he remembered.",
-              "start": 25.656
+              "start": 28.584
             },
             {
               "text": "Grandma had given him the seeds.",
-              "start": 27.528
+              "start": 30.456
             },
             {
               "text": "Tilly had given him good advice.",
-              "start": 29.76
+              "start": 32.688
             },
             {
-              "text": "Milo had helped him keep busy.",
-              "start": 31.872
-            },
-            {
-              "text": "And the bees had visited every flower.",
-              "start": 33.888
+              "text": "Milo had shared his blueberries.",
+              "start": 34.8
             }
           ],
           [
             {
               "text": "“I know!”",
-              "start": 36.816
+              "start": 37.032
             },
             {
               "text": "said Benny.",
-              "start": 38.688
+              "start": 38.904
             },
             {
-              "text": "“I will share my garden with everyone!”",
-              "start": 40.56
+              "text": "“I will have a fruit picnic for everyone!”",
+              "start": 40.776
             }
           ],
           [
             {
-              "text": "So Benny made invitations for all his friends.",
-              "start": 43.848
+              "text": "On Saturday, all his friends came.",
+              "start": 44.28
             },
             {
-              "text": "On Saturday, they came.",
-              "start": 47.112
+              "text": "Tilly brought a basket of oranges.",
+              "start": 46.848
             },
             {
-              "text": "Tilly brought a picnic blanket.",
-              "start": 48.984
+              "text": "Milo brought grapes and bananas.",
+              "start": 49.056
             },
             {
-              "text": "Milo brought acorn cups.",
-              "start": 51.0
-            },
-            {
-              "text": "Even the crows came, and this time, Benny didn't shoo them away.",
-              "start": 53.112
+              "text": "Grandma Bunny brought a pitcher of pink lemonade.",
+              "start": 51.456
             }
           ],
           [
             {
-              "text": "They ate carrot cake and strawberry pie.",
-              "start": 57.696
+              "text": "Together, they made the biggest fruit salad in the valley.",
+              "start": 54.72
             },
             {
-              "text": "They told jokes and played games until the stars came out.",
-              "start": 60.384
+              "text": "Apples, pears, cherries, strawberries, oranges, grapes, and bananas, all in one bowl!",
+              "start": 58.44
+            }
+          ],
+          [
+            {
+              "text": "They ate cold slices of watermelon and laughed until the stars came out.",
+              "start": 66.456
             }
           ],
           [
             {
               "text": "“Benny,”",
-              "start": 64.104
+              "start": 71.328
             },
             {
               "text": "said Milo, with a very full tummy,",
-              "start": 65.976
+              "start": 73.2
             },
             {
               "text": "“this is the best garden ever.”",
-              "start": 69.0
+              "start": 76.224
             }
           ],
           [
             {
               "text": "Benny smiled.",
-              "start": 71.568
+              "start": 78.792
             },
             {
-              "text": "He looked at his friends, laughing together under the sunflowers.",
-              "start": 73.44
+              "text": "It was not the best garden because it was big.",
+              "start": 80.664
             },
             {
-              "text": "He knew Milo was right.",
-              "start": 77.616
-            },
-            {
-              "text": "Not because it was the biggest garden, but because it was a garden for everyone.",
-              "start": 79.488
+              "text": "It was the best garden because it was a garden for everyone.",
+              "start": 83.472
             }
           ],
           [
             {
               "text": "The End.",
-              "start": 84.36
+              "start": 87.096
             }
           ]
         ]

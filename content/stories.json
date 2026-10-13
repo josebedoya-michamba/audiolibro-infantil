@@ -5,57 +5,64 @@
       "id": "pip",
       "title": "Pip and the Fallen Star",
       "theme": "peach",
+      "vocabularyTopic": "animals",
       "summary": {
-        "es": "Un zorrito encuentra una estrella que se cayó del cielo y promete ayudarla a volver a casa.",
-        "en": "A little fox finds a star that fell from the sky and promises to help her get back home."
+        "es": "Un zorrito y sus amigos animales del bosque ayudan a una estrella caída a volver al cielo.",
+        "en": "A little fox and his animal friends from the forest help a fallen star get back to the sky."
       },
       "narrator": { "voice": "en-US-AvaNeural", "rate": "-10%" },
       "characters": {
         "Pip": { "voice": "en-US-AnaNeural", "rate": "-5%" },
         "Twinkle": { "voice": "en-GB-MaisieNeural", "rate": "-5%" },
-        "Owl": { "voice": "en-US-ChristopherNeural", "rate": "-15%", "pitch": "-6Hz" }
+        "Owl": { "voice": "en-US-ChristopherNeural", "rate": "-15%", "pitch": "-6Hz" },
+        "Frog": { "voice": "en-US-RogerNeural", "rate": "+5%", "pitch": "+6Hz" },
+        "Bear": { "voice": "en-US-GuyNeural", "rate": "-15%", "pitch": "-10Hz" }
       },
       "chapters": [
         {
           "title": "The Star in the Meadow",
           "paragraphs": [
-            ["Once upon a time, at the edge of a quiet forest, there lived a little fox named Pip. Pip had a fluffy orange tail and a nose that loved to sniff out adventures."],
-            ["One night, Pip could not sleep. He peeked out of his den and saw something strange. A tiny light was falling from the sky! It tumbled down, down, down, and landed softly in the meadow."],
-            ["Pip tiptoed through the tall grass. There, between two daisies, was a little star. She was glowing, but only a tiny bit. And she was crying."],
-            [{ "Pip": "“Hello,”" }, "whispered Pip.", { "Pip": "“Are you okay?”" }],
+            ["Once upon a time, at the edge of a quiet forest, there lived a little fox named Pip. Pip had a fluffy orange tail and lots of animal friends."],
+            ["One night, everyone was asleep. The rabbits were asleep in their burrow. The mice were asleep under the roots. Even the birds were asleep in their nests."],
+            ["But Pip could not sleep. He peeked out of his den and saw a tiny light falling from the sky. It landed softly in the meadow, next to the pond."],
+            ["Pip tiptoed through the grass. A green frog jumped onto a lily pad.", { "Frog": "“Ribbit! Did you see that?”" }],
+            ["There, between two daisies, was a little star. She was glowing, but only a tiny bit. And she was crying."],
+            [{ "Pip": "“Hello,”" }, "whispered Pip.", { "Pip": "“I'm Pip, the fox. Are you okay?”" }],
             [{ "Twinkle": "“I fell,”" }, "sniffled the star.", { "Twinkle": "“My name is Twinkle. I was playing tag with the moon, and I slipped. Now I can't get home.”" }],
-            ["Pip looked up. The sky was very, very far away. But Pip had a kind heart, and kind hearts always find a way."],
-            [{ "Pip": "“Don't worry, Twinkle,”" }, "said Pip.", { "Pip": "“I will help you get home. I promise.”" }],
-            ["Twinkle stopped crying. Her light grew just a little bit brighter. And together, the fox and the star began to make a plan."]
+            ["A sleepy rabbit hopped over. A little mouse came too. They all looked up at the sky. It was very, very far away."],
+            [{ "Pip": "“Don't worry, Twinkle,”" }, "said Pip.", { "Pip": "“My friends and I will help you get home. I promise.”" }],
+            ["Twinkle smiled, and her light grew a little bit brighter."]
           ]
         },
         {
           "title": "The Tallest Hill",
           "paragraphs": [
             [{ "Twinkle": "“Where is the closest place to the sky?”" }, "asked Twinkle."],
-            ["Pip thought and thought. Then his ears popped up.", { "Pip": "“Grandpa Owl will know! He knows everything.”" }],
-            ["So Pip carried Twinkle carefully in his paws, and they walked to the oldest tree in the forest. Grandpa Owl was sitting on a branch, blinking his big yellow eyes."],
-            [{ "Owl": "“Hoo, hoo. What do we have here?”" }, "said Grandpa Owl."],
-            [{ "Pip": "“This is Twinkle,”" }, "said Pip.", { "Pip": "“She fell from the sky. We need to find the closest place to the stars.”" }],
-            ["Grandpa Owl smiled.", { "Owl": "“Climb the Tallest Hill, beyond the river. At the very top, the sky is close enough to touch. But hurry! Twinkle must be home before the sun wakes up.”" }],
-            ["Pip and Twinkle set off. They crossed the river by hopping on stones. One, two, three! They climbed over rocks and through prickly bushes. Pip's legs grew tired, but he did not stop."],
-            [{ "Twinkle": "“You are very brave, Pip,”" }, "said Twinkle softly."],
-            ["Pip smiled.", { "Pip": "“Friends help friends,”" }, "he said. And step by step, they climbed higher and higher."]
+            ["Pip thought and thought.", { "Pip": "“Grandpa Owl will know! Owls are very wise.”" }],
+            ["So Pip carried Twinkle to the oldest tree in the forest. A squirrel ran down the trunk to say hello. High on a branch sat Grandpa Owl, blinking his big yellow eyes."],
+            [{ "Owl": "“Hoo, hoo. Climb the Tallest Hill, little fox. At the top, the sky is close enough to touch. But first, you must cross the river.”" }],
+            ["At the river, a family of ducks was swimming. Quack, quack! Silver fish jumped out of the water. Splash!"],
+            [{ "Pip": "“How can we cross?”" }, "asked Pip."],
+            ["A busy beaver pushed a big log across the water. Now there was a bridge!"],
+            ["On the other side, they met a big brown bear eating berries."],
+            [{ "Bear": "“The Tallest Hill is that way,”" }, "said the bear, pointing with his paw.", { "Bear": "“Be brave, little fox.”" }],
+            ["Pip's legs were tired, but he did not stop.", { "Twinkle": "“You are very brave, Pip,”" }, "said Twinkle."],
+            [{ "Pip": "“Friends help friends,”" }, "said Pip. And step by step, they climbed higher and higher."]
           ]
         },
         {
           "title": "Home in the Sky",
           "paragraphs": [
-            ["At last, Pip reached the top of the Tallest Hill. The wind was cool, and the stars looked so close that Pip could almost count their sparkles."],
-            [{ "Pip": "“We made it!”" }, "cheered Pip."],
-            ["But Twinkle was worried.", { "Twinkle": "“I'm still too small and too dim to fly,”" }, "she said.", { "Twinkle": "“How will I get back up there?”" }],
-            ["Pip had an idea.", { "Pip": "“Maybe you need to feel happy to shine bright. Let's think of happy things!”" }],
-            ["So they did. They thought about warm sunshine, and lazy rivers, and the funny way Grandpa Owl said hoo. They laughed and laughed."],
-            ["And with every laugh, Twinkle glowed brighter. And brighter. And brighter! Until she was shining like a tiny moon."],
-            ["Slowly, Twinkle began to float.", { "Twinkle": "“Thank you, Pip,”" }, "she said.", { "Twinkle": "“I will never forget you.”" }],
+            ["At last, Pip reached the top of the Tallest Hill. The stars looked so close!"],
+            ["But Twinkle was worried.", { "Twinkle": "“I'm too dim to fly. How will I get back up there?”" }],
+            ["Pip had an idea.", { "Pip": "“Maybe you need to feel happy to shine bright!”" }],
+            ["Just then, all of Pip's friends arrived. The rabbit, the mouse, and the frog. The squirrel, the ducks, and the big brown bear. Even a gentle deer and Grandpa Owl came to help."],
+            ["The frog did a funny dance. Ribbit, ribbit! The ducks sang a silly song. Quack, quack! The bear told a joke about honey."],
+            ["Everyone laughed and laughed. And with every laugh, Twinkle glowed brighter. And brighter. And brighter!"],
+            ["Slowly, Twinkle began to float.", { "Twinkle": "“Thank you, Pip. Thank you, everyone!”" }],
             ["Up, up, up she flew, until she found her place in the sky."],
-            ["Pip waved and waved. Then something wonderful happened. Right above him, one little star winked. Twice."],
-            ["Pip smiled all the way home. And every night after that, before he went to sleep, Pip looked up and winked back."],
+            ["The animals cheered. Then one little star winked at them. Twice."],
+            ["And every night after that, before he went to sleep, Pip looked up and winked back."],
             ["The End."]
           ]
         }
@@ -65,58 +72,61 @@
       "id": "nimbus",
       "title": "Nimbus, the Little Cloud",
       "theme": "sky",
+      "vocabularyTopic": "nature",
       "summary": {
-        "es": "Una nube pequeñita que no sabe llover descubre su propia manera de ayudar.",
-        "en": "A tiny cloud who can't make rain discovers his very own way to help."
+        "es": "Una nube pequeñita viaja sobre montañas, ríos y lagos, y descubre su propia manera de ayudar.",
+        "en": "A tiny cloud travels over mountains, rivers and lakes, and discovers his very own way to help."
       },
       "narrator": { "voice": "en-GB-SoniaNeural", "rate": "-10%" },
       "characters": {
         "Nimbus": { "voice": "en-GB-MaisieNeural", "rate": "-5%" },
         "Mama": { "voice": "en-GB-LibbyNeural", "rate": "-12%" },
-        "Daisy": { "voice": "en-US-AnaNeural", "rate": "-5%", "pitch": "+4Hz" }
+        "Daisy": { "voice": "en-US-AnaNeural", "rate": "-5%", "pitch": "+4Hz" },
+        "Wind": { "voice": "en-GB-RyanNeural", "rate": "-10%" }
       },
       "chapters": [
         {
           "title": "Too Small to Rain",
           "paragraphs": [
-            ["High above the hills, where the birds fly and the wind sings, lived a little cloud named Nimbus."],
-            ["Nimbus was soft and round, like a puff of cotton candy. But Nimbus had a problem. All the big clouds could make rain. Nimbus could not make even one drop."],
-            ["Every morning, the big clouds gathered together. They grew dark and heavy, and then, splish, splash, they watered the fields below."],
-            [{ "Nimbus": "“Can I try?”" }, "asked Nimbus."],
-            ["Mama Cumulus, the biggest cloud of all, smiled kindly.", { "Mama": "“Of course you can, little one.”" }],
-            ["Nimbus squeezed and squeezed. He puffed up his cheeks. He held his breath. But nothing happened. Not a single drop."],
-            ["The other clouds giggled, and Nimbus felt his edges go wobbly.", { "Nimbus": "“I'm too small,”" }, "he said sadly.", { "Nimbus": "“I'm no good at anything.”" }],
-            [{ "Mama": "“Being small is not the same as being no good,”" }, "said Mama Cumulus.", { "Mama": "“Everyone has their own way to help. You just haven't found yours yet.”" }],
-            ["Nimbus wasn't so sure. That afternoon, he floated away from the others, all by himself, wondering what a little cloud could ever do."]
+            ["High in the blue sky, above the mountains and the forest, lived a little cloud named Nimbus."],
+            ["Below him, Nimbus could see everything. Tall green trees. A long, shiny river. Fields of grass and flowers. And the warm, yellow sun smiling over it all."],
+            ["Every morning, the big clouds gathered over the mountains. They grew dark and heavy, and then, splish, splash, they made rain for the forest and the fields."],
+            [{ "Nimbus": "“Can I make rain too?”" }, "asked Nimbus."],
+            ["Mama Cumulus, the biggest cloud of all, smiled kindly.", { "Mama": "“Of course you can, little one. Try!”" }],
+            ["Nimbus squeezed and squeezed. He puffed up his cheeks. But nothing happened. Not a single raindrop."],
+            [{ "Nimbus": "“I'm too small,”" }, "he said sadly.", { "Nimbus": "“I'm no good at anything.”" }],
+            [{ "Mama": "“Being small is not the same as being no good,”" }, "said Mama Cumulus.", { "Mama": "“Everyone has their own way to help.”" }],
+            ["Just then, the wind blew softly.", { "Wind": "“Come with me, little cloud. I will show you the world.”" }],
+            ["So Nimbus floated away on the wind, wondering what a little cloud could do."]
           ]
         },
         {
           "title": "The Thirsty Garden",
           "paragraphs": [
-            ["Nimbus drifted over hills and valleys until he saw a tiny garden next to a little yellow house."],
-            ["The garden looked very sad. The flowers were droopy. The leaves were dry and crunchy. And in the middle stood one small daisy, bending her head toward the ground."],
+            ["The wind carried Nimbus over a tall mountain with snow on top. They passed a deep blue lake and a quiet valley full of rocks."],
+            ["At last, Nimbus saw a tiny garden next to a little yellow house."],
+            ["The garden looked very sad. The soil was dry and cracked. The grass was brown. The leaves on the little tree were crunchy. And in the middle stood one small daisy, bending her head toward the ground."],
             [{ "Nimbus": "“Excuse me,”" }, "called Nimbus.", { "Nimbus": "“Are you all right?”" }],
-            ["The daisy looked up.", { "Daisy": "“It's so hot,”" }, "she sighed.", { "Daisy": "“The big clouds never come this way. Our garden is too small for them to notice.”" }],
-            ["Nimbus looked at the daisy. Then he looked at himself. Too small to notice. He knew exactly how that felt."],
-            [{ "Nimbus": "“I wish I could help you,”" }, "said Nimbus.", { "Nimbus": "“But I can't make rain.”" }],
-            [{ "Daisy": "“Could you just stay for a while?”" }, "asked the daisy.", { "Daisy": "“It's nice to have a friend.”" }],
-            ["So Nimbus stayed. He floated right over the garden, and something surprising happened. His soft, round body made a cool, gentle shadow. The flowers stopped wilting. The daisy lifted her head."],
-            [{ "Daisy": "“Oh!”" }, "she said.", { "Daisy": "“That feels so much better!”" }],
-            ["Nimbus felt a warm, fizzy feeling inside. It was the happiest he had ever felt."]
+            [{ "Daisy": "“The sun is so hot,”" }, "sighed the daisy.", { "Daisy": "“The big clouds never come here. Our garden is too small for them to notice.”" }],
+            ["Too small to notice. Nimbus knew exactly how that felt."],
+            [{ "Nimbus": "“I can't make rain,”" }, "he said.", { "Nimbus": "“But I can stay with you.”" }],
+            ["So Nimbus floated right over the garden. His soft, round body made a cool, gentle shadow. The flowers stopped wilting. The daisy lifted her head."],
+            [{ "Daisy": "“Oh, thank you!”" }, "she said.", { "Daisy": "“That feels so much better!”" }],
+            ["Nimbus felt a warm, happy feeling inside."]
           ]
         },
         {
           "title": "Nimbus Shines",
           "paragraphs": [
-            ["Nimbus stayed with the garden all afternoon. He told the daisy stories about the sky, and the daisy told him about bees and butterflies."],
-            ["Nimbus was so happy that he started to feel full. Full of joy, full of friendship, full of something tingly."],
-            ["Then, plip! A single raindrop fell from Nimbus and landed right on the daisy's petal."],
+            ["Nimbus stayed with the garden all afternoon. He told the daisy about mountains, lakes, and rivers. The daisy told him about seeds, roots, and bees."],
+            ["Nimbus was so happy that he felt full. Full of joy, full of friendship, full of something tingly."],
+            ["Then, plip! A single raindrop fell from Nimbus and landed on the daisy's petal."],
             [{ "Nimbus": "“Was that me?”" }, "gasped Nimbus."],
-            ["Plip, plop, plip! More drops fell, soft and gentle, just the right size for a small garden. The flowers drank and drank. The leaves turned green again."],
+            ["Plip, plop, plip! Gentle rain began to fall. The dry soil drank and drank. The brown grass turned green. New leaves grew on the little tree."],
             [{ "Daisy": "“You did it, Nimbus!”" }, "cheered the daisy.", { "Daisy": "“You made rain!”" }],
-            ["When the rain stopped, the sun peeked out from behind Nimbus. Its light shone through the last tiny drops, and a rainbow appeared over the garden. It was a small rainbow, but it was the most beautiful one Nimbus had ever seen."],
-            ["That evening, Nimbus floated home to Mama Cumulus.", { "Nimbus": "“I found my way to help,”" }, "he said proudly.", { "Nimbus": "“Small clouds can make small rain for small gardens.”" }],
-            ["Mama Cumulus wrapped him in a big, fluffy hug.", { "Mama": "“I always knew you would,”" }, "she said."],
+            ["When the rain stopped, the sun peeked out. Its light shone through the last raindrops, and a beautiful rainbow appeared over the garden. Red, orange, yellow, green, blue, and purple!"],
+            ["That evening, the wind carried Nimbus home over the mountains.", { "Nimbus": "“Mama, I found my way to help! Small clouds can make small rain for small gardens.”" }],
+            ["Mama Cumulus gave him a big, fluffy hug.", { "Mama": "“I always knew you would.”" }],
             ["And from that day on, whenever a little garden felt thirsty, Nimbus was always the first to come."],
             ["The End."]
           ]
@@ -125,60 +135,61 @@
     },
     {
       "id": "benny",
-      "title": "Benny's Big Garden",
+      "title": "Benny's Fruit Garden",
       "theme": "mint",
+      "vocabularyTopic": "fruits",
       "summary": {
-        "es": "Un conejito quiere el jardín más grande del valle y aprende que lo bueno toma tiempo y es mejor compartido.",
-        "en": "A bunny wants the biggest garden in the valley and learns that good things take time and are better shared."
+        "es": "Un conejito siembra un jardín de frutas y aprende que lo bueno toma tiempo y es mejor compartido.",
+        "en": "A bunny plants a fruit garden and learns that good things take time and are better shared."
       },
       "narrator": { "voice": "en-US-AndrewNeural", "rate": "-10%" },
       "characters": {
         "Benny": { "voice": "en-US-AnaNeural", "rate": "-2%", "pitch": "-4Hz" },
         "Tilly": { "voice": "en-US-JennyNeural", "rate": "-25%", "pitch": "-3Hz" },
-        "Milo": { "voice": "en-GB-MaisieNeural", "rate": "+5%", "pitch": "+8Hz" }
+        "Milo": { "voice": "en-GB-MaisieNeural", "rate": "+5%", "pitch": "+8Hz" },
+        "Grandma": { "voice": "en-US-MichelleNeural", "rate": "-15%", "pitch": "-4Hz" }
       },
       "chapters": [
         {
           "title": "The Tiny Seeds",
           "paragraphs": [
-            ["Benny was a bunny with long floppy ears and a very big dream. He wanted to grow the biggest, most wonderful garden in the whole valley."],
-            ["One sunny morning, Grandma Bunny gave him a little paper bag. Inside were seeds of every shape. Round seeds, flat seeds, stripy seeds, and seeds as small as freckles."],
-            [{ "Benny": "“Hooray!”" }, "shouted Benny.", { "Benny": "“Today I will plant my garden!”" }],
-            ["He dug little holes with his paws. He dropped in the seeds, one by one. He covered them with soft, dark soil, and he watered them with his tiny blue watering can."],
+            ["Benny was a bunny with long floppy ears and a very big dream. He wanted to grow a garden full of fruit."],
+            ["One sunny morning, Grandma Bunny gave him a little paper bag.", { "Grandma": "“These are fruit seeds, Benny. Take good care of them.”" }],
+            ["Benny looked inside. There were tiny apple seeds and round cherry pits. There were flat watermelon seeds and little strawberry plants. There was even a baby lemon tree!"],
+            [{ "Benny": "“Hooray!”" }, "shouted Benny.", { "Benny": "“Today I will plant my fruit garden!”" }],
+            ["He dug little holes with his paws. He planted the seeds one by one. He watered them with his tiny blue watering can."],
             ["Then Benny sat down and waited. And waited. And waited."],
             ["His friend Tilly the turtle came walking by, very slowly.", { "Tilly": "“What are you doing, Benny?”" }],
-            [{ "Benny": "“I'm waiting for my garden to grow,”" }, "said Benny.", { "Benny": "“It should be ready any minute now.”" }],
-            ["Tilly smiled a slow, wise smile.", { "Tilly": "“Gardens don't grow in minutes, Benny. They grow in days and weeks. Good things take time.”" }],
-            ["Benny's ears drooped. Days? Weeks? That sounded like forever."]
+            [{ "Benny": "“I'm waiting for my apples and strawberries,”" }, "said Benny.", { "Benny": "“They should be ready any minute now.”" }],
+            ["Tilly smiled a slow, wise smile.", { "Tilly": "“Fruit doesn't grow in minutes, Benny. It grows in weeks and months. Good things take time.”" }],
+            ["Benny's ears drooped. Weeks? Months? That sounded like forever."]
           ]
         },
         {
           "title": "Waiting Is Hard",
           "paragraphs": [
-            ["The next morning, Benny ran outside. Nothing. Just brown dirt."],
-            ["The morning after that, he ran outside again. Still nothing."],
-            [{ "Benny": "“Maybe the seeds are sleeping,”" }, "said Benny. So he sang them a wake-up song.", { "Benny": "“Grow, little seeds! Grow, grow, grow!”" }],
-            ["Milo the mouse peeked out from under a leaf.", { "Milo": "“Benny, what's all that noise?”" }],
-            [{ "Benny": "“My seeds won't grow,”" }, "said Benny.", { "Benny": "“I want my garden now!”" }],
-            ["Milo thought for a moment.", { "Milo": "“When I'm waiting for something, I keep busy. Why don't you take care of your garden while it grows?”" }],
-            ["So Benny tried. Every day, he gave the soil a drink of water. He pulled out the weeds. He shooed away the hungry crows. And while he worked, he forgot to be grumpy."],
-            ["Then, one morning, Benny saw something tiny and green poking out of the ground. Then another. And another!"],
-            [{ "Benny": "“Sprouts!”" }, "shouted Benny, hopping in circles.", { "Benny": "“My garden is growing!”" }],
+            ["The next morning, Benny ran outside. No apples. No strawberries. Just brown dirt."],
+            ["Milo the mouse peeked out from under a leaf. He was eating a handful of blueberries.", { "Milo": "“Benny, why do you look so grumpy?”" }],
+            [{ "Benny": "“My fruit won't grow,”" }, "said Benny.", { "Benny": "“I want a big red apple now!”" }],
+            [{ "Milo": "“Here, have a blueberry,”" }, "said Milo.", { "Milo": "“When I'm waiting for something, I keep busy. Why don't you take care of your garden while it grows?”" }],
+            ["So Benny tried. Every day, he watered the soil. He pulled out the weeds. He shooed away the hungry crows. And while he worked, he forgot to be grumpy."],
+            ["One morning, Benny saw tiny green sprouts. Then he saw little white flowers on the strawberry plants. Then a tiny green bump appeared on the lemon tree!"],
+            [{ "Benny": "“Is that a lemon?”" }, "asked Benny, hopping in circles.", { "Benny": "“My fruit garden is growing!”" }],
             ["Tilly the turtle nodded.", { "Tilly": "“You see? Waiting is hard. But when your paws are busy, it gets a little easier.”" }]
           ]
         },
         {
-          "title": "A Garden for Everyone",
+          "title": "A Fruit Picnic",
           "paragraphs": [
-            ["Weeks went by, and Benny's garden grew and grew. There were tall sunflowers, plump red tomatoes, crunchy carrots, and strawberries as sweet as candy."],
-            ["It was the biggest, most wonderful garden in the whole valley."],
-            ["Benny was so proud. But when he looked at all that food, he had a funny feeling.", { "Benny": "“This is too much for just one bunny,”" }, "he said."],
-            ["Then he remembered. Grandma had given him the seeds. Tilly had given him good advice. Milo had helped him keep busy. And the bees had visited every flower."],
-            [{ "Benny": "“I know!”" }, "said Benny.", { "Benny": "“I will share my garden with everyone!”" }],
-            ["So Benny made invitations for all his friends. On Saturday, they came. Tilly brought a picnic blanket. Milo brought acorn cups. Even the crows came, and this time, Benny didn't shoo them away."],
-            ["They ate carrot cake and strawberry pie. They told jokes and played games until the stars came out."],
+            ["Months went by, and Benny's garden grew and grew. There were sweet red strawberries and shiny red cherries. There were crunchy green apples and juicy pears. A big striped watermelon sat in the sun, and the lemon tree was full of yellow lemons."],
+            ["Benny was so proud. But when he looked at all that fruit, he had a funny feeling.", { "Benny": "“This is too much fruit for just one bunny,”" }, "he said."],
+            ["Then he remembered. Grandma had given him the seeds. Tilly had given him good advice. Milo had shared his blueberries."],
+            [{ "Benny": "“I know!”" }, "said Benny.", { "Benny": "“I will have a fruit picnic for everyone!”" }],
+            ["On Saturday, all his friends came. Tilly brought a basket of oranges. Milo brought grapes and bananas. Grandma Bunny brought a pitcher of pink lemonade."],
+            ["Together, they made the biggest fruit salad in the valley. Apples, pears, cherries, strawberries, oranges, grapes, and bananas, all in one bowl!"],
+            ["They ate cold slices of watermelon and laughed until the stars came out."],
             [{ "Milo": "“Benny,”" }, "said Milo, with a very full tummy,", { "Milo": "“this is the best garden ever.”" }],
-            ["Benny smiled. He looked at his friends, laughing together under the sunflowers. He knew Milo was right. Not because it was the biggest garden, but because it was a garden for everyone."],
+            ["Benny smiled. It was not the best garden because it was big. It was the best garden because it was a garden for everyone."],
             ["The End."]
           ]
         }

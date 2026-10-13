@@ -14,6 +14,7 @@
   ];
   const MAX_PAGE_SENTENCES = 2;
   const MAX_PAGE_WORDS = 28;
+  const MIN_TEXT_PX = 18;
   const SENTENCE_END = /[.!?…]["”’)]*\s*$/;
 
   const esc = (value) =>
@@ -274,6 +275,7 @@
     const timeNow = $('.t-now');
     const bookPage = $('.book-page');
     const pageBody = $('.page-body');
+    const pageStage = $('.page-stage');
     const pageText = $('.page-text');
     const pageCount = $('.page-count');
     const prevPageBtn = $('[data-act="prev-page"]');
@@ -312,6 +314,24 @@
       return found;
     }
 
+    // The book keeps a fixed size: start from the chosen text size and shrink it
+    // (binary search, down to MIN_TEXT_PX) until the page's text fits.
+    function fitText() {
+      pageText.style.fontSize = '';
+      const style = getComputedStyle(pageStage);
+      const available = pageStage.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+      if (available <= 0 || pageText.offsetHeight <= available) return;
+      let lo = MIN_TEXT_PX;
+      let hi = parseFloat(getComputedStyle(pageText).fontSize);
+      while (hi - lo > 0.5) {
+        const mid = (lo + hi) / 2;
+        pageText.style.fontSize = `${mid}px`;
+        if (pageText.offsetHeight <= available) lo = mid;
+        else hi = mid;
+      }
+      pageText.style.fontSize = `${lo}px`;
+    }
+
     function showPage(n) {
       if (n === shownPage) return;
       const direction = n > shownPage ? 'next' : 'prev';
@@ -321,6 +341,7 @@
       pageText.innerHTML = pages[n]
         .map((unit) => `<span class="sentence" data-i="${unit.index}">${esc(unit.text)}</span>`)
         .join(' ');
+      fitText();
       dots.forEach((dot, i) => {
         dot.classList.toggle('is-active', i === n);
         dot.classList.toggle('is-past', i < n);
@@ -378,6 +399,7 @@
     function setEnded(ended) {
       endCard.hidden = !ended;
       pageBody.hidden = ended;
+      if (!ended) fitText();
     }
 
     function showToast(message) {
@@ -439,6 +461,7 @@
         bookPage.dataset.textSize = sizeBtn.dataset.font;
         window.Store.saveSettings({ textSize: sizeBtn.dataset.font });
         el.querySelectorAll('[data-font]').forEach((b) => b.setAttribute('aria-pressed', String(b === sizeBtn)));
+        fitText();
         return;
       }
       const action = event.target.closest('[data-act]')?.dataset.act;
@@ -488,10 +511,15 @@
     const onHide = () => {
       if (document.visibilityState === 'hidden') save();
     };
+    // Refit when the book is resized or the web fonts finish loading.
+    const resizeObserver = new ResizeObserver(() => fitText());
+    resizeObserver.observe(pageStage);
+    document.fonts?.ready.then(() => fitText());
     document.addEventListener('keydown', onKey);
     document.addEventListener('visibilitychange', onHide);
     window.addEventListener('pagehide', save);
     cleanups.push(
+      () => resizeObserver.disconnect(),
       () => document.removeEventListener('keydown', onKey),
       () => document.removeEventListener('visibilitychange', onHide),
       () => window.removeEventListener('pagehide', save)
